@@ -1,0 +1,21 @@
+{
+  "name": "hacklist",
+  "description": "Be aware of upcoming IT events",
+  "slug": "hacklist",
+  "sdkVersion": "11.0.0",
+  "version": "1.0.0",
+  "orientation": "portrait",
+  "primaryColor": "#cccccc",
+  "iconUrl": "https://datasciencebe.files.wordpress.com/2015/02/keep-calm-and-hackathon-9.png",
+  "notification": {
+    "iconUrl": "https://s3.amazonaws.com/exp-us-standard/placeholder-push-icon-blue-circle.png",
+    "color": "#000000"
+  },
+  "loading": {
+    "iconUrl": "https://datasciencebe.files.wordpress.com/2015/02/keep-calm-and-hackathon-9.png",
+    "hideExponentText": true
+  },
+  "packagerOpts": {
+    "assetExts": ["ttf", "mp4"]
+  }
+}
