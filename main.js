@@ -3,14 +3,17 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
-  View,
+  View
 } from 'react-native';
+
+// import is possible because we exported that class
+import HackathonsList from './app_components/hackathons_list.js';
 
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up main.js to start working on your app!</Text>
+        <HackathonsList />
       </View>
     );
   }
@@ -25,4 +28,5 @@ const styles = StyleSheet.create({
   },
 });
 
+// when to use AppRegistry.registerComponent ?
 Exponent.registerRootComponent(App);
