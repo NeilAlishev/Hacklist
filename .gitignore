@@ -1,4 +1,7 @@
-node_modules/**/*
-.exponent/*
+node_modules
+.exponent
+
 npm-debug.*
 .DS_Store
+
+environment.js
