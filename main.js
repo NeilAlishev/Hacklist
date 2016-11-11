@@ -5,8 +5,6 @@ import {
   Text,
   View
 } from 'react-native';
-
-// import is possible because we exported that class
 import HackathonsList from './app_components/hackathons_list.js';
 
 class App extends React.Component {
