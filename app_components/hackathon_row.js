@@ -2,9 +2,9 @@ import Exponent from 'exponent';
 import React from 'react';
 import {
   View,
-  ListView,
   StyleSheet,
-  Text
+  Text,
+  TouchableHighlight
 } from 'react-native';
 
 export default class HackathonRow extends React.Component {
@@ -13,27 +13,27 @@ export default class HackathonRow extends React.Component {
   }
 
   render() {
-    let hack = this.props.data;
+    let hack = this.props.rowData;
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>{hack.title}</Text>
-        <Text style={styles.text}>{hack.city} - {hack.address}</Text>
-        <Text style={styles.text}>at {hack.date}</Text>
-      </View>
+      <TouchableHighlight
+        style={styles.row}
+        underlayColor='#c8c7cc'
+        onPress={() => this._onPress(hack.title)}
+      >
+        <Text>{hack.title} - {hack.city} - {hack.address}</Text>
+      </TouchableHighlight>
     );
+  }
+
+  _onPress(rowData) {
+    console.log(rowData+' pressed');
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  text: {
-    marginLeft: 12,
-    fontSize: 16,
+  row: {
+    padding: 10,
+    height: 44,
   }
 });
