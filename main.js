@@ -26,5 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// when to use AppRegistry.registerComponent ?
 Exponent.registerRootComponent(App);

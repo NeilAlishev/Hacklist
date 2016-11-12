@@ -8,20 +8,21 @@ import {
 } from 'react-native';
 
 export default class HackathonRow extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        let hack = this.props.data;
-        return (
-          <View style={styles.container}>
-            <Text style={styles.text}>{hack.title}</Text>
-            <Text style={styles.text}>{hack.city} - {hack.address}</Text>
-            <Text style={styles.text}>at {hack.date}</Text>
-          </View>      
-        );
-    }
+  render() {
+    let hack = this.props.data;
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>{hack.title}</Text>
+        <Text style={styles.text}>{hack.city} - {hack.address}</Text>
+        <Text style={styles.text}>at {hack.date}</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
