@@ -1,4 +1,4 @@
 export default Rest = {
-    hack_list: '/hack/list',
-    hack: '/hack/'
+  hack_list: '/api/hacks/',
+  hack: '/hack/'
 }

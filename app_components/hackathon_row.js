@@ -2,37 +2,62 @@ import Exponent from 'exponent';
 import React from 'react';
 import {
   View,
-  ListView,
   StyleSheet,
-  Text
+  Text,
+  TouchableHighlight,
+  Image
 } from 'react-native';
 
 export default class HackathonRow extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        let hack = this.props.data;
-        return (
-          <View style={styles.container}>
-            <Text style={styles.text}>{hack.title}</Text>
-            <Text style={styles.text}>{hack.city} - {hack.address}</Text>
-            <Text style={styles.text}>at {hack.date}</Text>
-          </View>      
-        );
-    }
+  render() {
+    let hack = this.props.rowData;
+
+    return (
+      <TouchableHighlight
+        style={styles.row}
+        underlayColor='#c8c7cc'
+        onPress={() => this._onPress(hack.title)}
+      >
+        <View style={styles.container}>
+          <Image source={require('../resources/images/test_image.png')}
+            style={styles.logo}
+          />
+          <Text style={styles.text}>
+            <Text style={styles.title}>{hack.title}{'\n'}</Text>
+            <Text>Город: {hack.city}{'\n'}</Text>
+            <Text>Дата проведения: 20.02.1950</Text>
+          </Text>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
+  _onPress(rowData) {
+    console.log(rowData+' pressed');
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 12,
     flexDirection: 'row',
-    alignItems: 'center',
+  },
+  row: {
+    padding: 10,
+    height: 80,
+  },
+  logo: {
+    height: 60,
+    width: 60,
+    borderRadius: 5
   },
   text: {
-    marginLeft: 12,
-    fontSize: 16,
+    paddingLeft: 10
+  },
+  title: {
+    fontWeight: 'bold'
   }
 });
