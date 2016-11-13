@@ -18,15 +18,15 @@ export default class HackathonsList extends React.Component {
     super(props);
   }
 
-  // page передается автоматически в качестве аргумента
   _onFetch(page = 1, callback, options) {
-    fetch(Environment.BASE_URL + Rest.hack_list)
+    fetch(`${Environment.BASE_URL}${Rest.hack_list}?page=${page}`)
       .then((response) => response.json())
       .then((hack_list) => {
-        // For pagination... After third press the list is over.
-        if (page === 3) {
+        console.log(hack_list.response.length)
+
+        if (hack_list.response.length === 0) {
           callback(hack_list.response, {
-            allLoaded: true, // the end of the list is reached
+            allLoaded: true
           });
         } else {
           callback(hack_list.response);
