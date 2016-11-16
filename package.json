@@ -9,6 +9,7 @@
     "exponent": "~11.0.0",
     "react": "~15.3.2",
     "react-native": "git+https://github.com/exponentjs/react-native#sdk-11.0.1",
+    "react-native-drawer-layout": "^1.1.0",
     "react-native-gifted-listview": "0.0.15"
   }
 }
