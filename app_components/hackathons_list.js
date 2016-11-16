@@ -18,19 +18,11 @@ export default class HackathonsList extends React.Component {
     super(props);
   }
 
-  _onFetch(page = 1, callback, options) {
-    fetch(`${Environment.BASE_URL}${Rest.hack_list}?page=${page}`)
+  _onFetch(page, callback, options) {
+    fetch(`${Environment.BASE_URL}${Rest.hack_list}`)
       .then((response) => response.json())
       .then((hack_list) => {
-        console.log(hack_list.response.length)
-
-        if (hack_list.response.length === 0) {
-          callback(hack_list.response, {
-            allLoaded: true
-          });
-        } else {
           callback(hack_list.response);
-        }
       })
       .catch((error) => console.error(error))
       .done();
@@ -39,12 +31,6 @@ export default class HackathonsList extends React.Component {
   _renderRowView(rowData) {
     return (
       <HackathonRow rowData={rowData}/>
-    );
-  }
-
-  _renderSeparatorView() {
-    return (
-      <View style={customStyles.separator} />
     );
   }
 
@@ -67,48 +53,6 @@ export default class HackathonsList extends React.Component {
     );
   }
 
-  // _renderRefreshableWaitingView(refreshCallback) {
-  //   if (Platform.OS !== 'android') {
-  //     return (
-  //       <View style={customStyles.refreshableView}>
-  //         <Text style={customStyles.actionsLabel}>
-  //           ↓
-  //         </Text>
-  //       </View>
-  //     );
-  //   } else {
-  //     return (
-  //       <TouchableHighlight
-  //         underlayColor='#c8c7cc'
-  //         onPress={refreshCallback}
-  //         style={customStyles.refreshableView}
-  //       >
-  //         <Text style={customStyles.actionsLabel}>
-  //           ↻
-  //         </Text>
-  //       </TouchableHighlight>
-  //     );
-  //   }
-  // }
-
-  // _renderRefreshableWillRefreshView() {
-  //   return (
-  //     <View style={customStyles.refreshableView}>
-  //       <Text style={customStyles.actionsLabel}>
-  //         ↻
-  //       </Text>
-  //     </View>
-  //   );
-  // }
-
-  // _renderRefreshableFetchingView() {
-  //   return (
-  //     <View style={customStyles.refreshableView}>
-  //       <GiftedSpinner />
-  //     </View>
-  //   );
-  // }
-
   render() {
     that = this;
 
@@ -123,39 +67,17 @@ export default class HackathonsList extends React.Component {
           onFetch={this._onFetch}
           firstLoader={true}
 
-          pagination={true}
-
           refreshable={true}
           refreshableViewHeight={50}
           refreshableDistance={40}
-          // refreshableFetchingView={this._renderRefreshableFetchingView}
-          // refreshableWillRefreshView={this._renderRefreshableWillRefreshView}
-          // refreshableWaitingView={this._renderRefreshableWaitingView}
+
           refreshableTintColor="black"
 
           customStyles={customStyles}
 
-          renderSeparator={this._renderSeparatorView}
-
           emptyView={this._renderEmptyView}
 
-          // rowHasChanged={(r1,r2)=>{
-          //   r1.id !== r2.id
-          // }}
-
-          // distinctRows={(rows)=>{
-          //   var indentitis = {};
-          //   var newRows = [];
-          //   for(var i = 0;i<rows.length; i++){
-          //     if(indentitis[rows[i].id]){
-
-          //     }else{
-          //       indentitis[rows[i].id]=true;
-          //       newRows.push(rows[i]);
-          //     }
-          //   }
-          //   return newRows;
-          // }}
+          enableEmptySections={true}
         />
       </View>
     );
