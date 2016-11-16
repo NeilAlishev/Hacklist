@@ -43,7 +43,7 @@ export default class HackathonRow extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   row: {
     padding: 10,

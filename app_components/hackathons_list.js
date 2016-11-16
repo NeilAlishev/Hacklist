@@ -22,8 +22,6 @@ export default class HackathonsList extends React.Component {
     fetch(`${Environment.BASE_URL}${Rest.hack_list}?page=${page}`)
       .then((response) => response.json())
       .then((hack_list) => {
-        console.log(hack_list.response.length)
-
         if (hack_list.response.length === 0) {
           callback(hack_list.response, {
             allLoaded: true
@@ -39,14 +37,7 @@ export default class HackathonsList extends React.Component {
   _renderRowView(rowData) {
     return (
       <HackathonRow rowData={rowData}/>
-    );
-  }
-
-  _renderSeparatorView() {
-    return (
-      <View style={customStyles.separator} />
-    );
-  }
+    )
 
   _renderEmptyView(refreshCallback) {
     return (
@@ -134,8 +125,6 @@ export default class HackathonsList extends React.Component {
           refreshableTintColor="black"
 
           customStyles={customStyles}
-
-          renderSeparator={this._renderSeparatorView}
 
           emptyView={this._renderEmptyView}
 
