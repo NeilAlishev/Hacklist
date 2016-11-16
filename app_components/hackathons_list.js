@@ -37,7 +37,8 @@ export default class HackathonsList extends React.Component {
   _renderRowView(rowData) {
     return (
       <HackathonRow rowData={rowData}/>
-    )
+    );
+  }
 
   _renderEmptyView(refreshCallback) {
     return (
@@ -127,6 +128,8 @@ export default class HackathonsList extends React.Component {
           customStyles={customStyles}
 
           emptyView={this._renderEmptyView}
+
+          enableEmptySections={true}
 
           // rowHasChanged={(r1,r2)=>{
           //   r1.id !== r2.id
