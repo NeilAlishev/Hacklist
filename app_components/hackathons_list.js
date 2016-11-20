@@ -130,7 +130,7 @@ const customStyles = StyleSheet.create({
 
 const styles = StyleSheet.create({
   navBar: {
-    height: 64,
+    height: 70,
     backgroundColor: '#007aff',
 
     justifyContent: 'center',

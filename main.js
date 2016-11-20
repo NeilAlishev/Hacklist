@@ -5,13 +5,15 @@ import {
   Text,
   View
 } from 'react-native';
-import HackathonsList from './app_components/hackathons_list.js';
+
+import HackathonsWithFiltration from
+  './app_components/hackathons_with_filtration.js';
 
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <HackathonsList />
+        <HackathonsWithFiltration />
       </View>
     );
   }
