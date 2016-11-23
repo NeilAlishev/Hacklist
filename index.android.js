@@ -1,15 +1,15 @@
-import Exponent from 'exponent';
 import React from 'react';
 import {
+  AppRegistry,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
 import HackathonsWithFiltration from
-  './app_components/hackathons_with_filtration.js';
+  './js/app_components/hackathons_with_filtration.js';
 
-class App extends React.Component {
+export default class hacklist extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   }
 });
 
-Exponent.registerRootComponent(App);
+AppRegistry.registerComponent('hacklist', () => hacklist);

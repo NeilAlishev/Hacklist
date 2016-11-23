@@ -1,15 +1,26 @@
 {
   "name": "hacklist",
-  "version": "0.0.0",
-  "description": "Hello Exponent!",
-  "author": null,
+  "version": "0.0.1",
   "private": true,
-  "main": "main.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
   "dependencies": {
-    "exponent": "~11.0.0",
-    "react": "~15.3.2",
-    "react-native": "git+https://github.com/exponentjs/react-native#sdk-11.0.1",
+    "react": "15.3.2",
+    "react-native": "^0.36.1",
     "react-native-drawer-layout": "^1.1.0",
-    "react-native-gifted-listview": "0.0.15"
+    "react-native-gifted-listview": "0.0.15",
+    "tcomb-form-native": "^0.5"
+  },
+  "jest": {
+    "preset": "jest-react-native"
+  },
+  "devDependencies": {
+    "babel-jest": "17.0.2",
+    "babel-preset-react-native": "1.9.0",
+    "jest": "17.0.3",
+    "jest-react-native": "17.0.3",
+    "react-test-renderer": "15.3.2"
   }
 }
