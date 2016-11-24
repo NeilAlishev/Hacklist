@@ -21,6 +21,7 @@ DerivedData
 project.xcworkspace
 ios/Pods
 ios/F8v2.xcworkspace
+.xcodeproj/ !*.xcodeproj/project.pbxproj
 
 # Android/IJ
 .idea
