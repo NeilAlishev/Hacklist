@@ -39,16 +39,11 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSAppTransportSecurity</key>
-	<!--See http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/ -->
 	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
+	  <!--DANGEROUS. This is because we use Http instead of Https-->
+	  <!--DON'T FORGET TO FIX THIS WHEN PUTTING ON PRODUCTION!!!-->
+	  <key>NSAllowsArbitraryLoads</key>
+	      <true/>
 	</dict>
 </dict>
 </plist>
