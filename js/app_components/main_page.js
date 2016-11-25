@@ -14,7 +14,7 @@ import DrawerLayout from 'react-native-drawer-layout';
 import HackathonsList from './hackathons_list.js';
 import FiltrationForm from './filtration_form.js';
 
-export default class HackathonsWithFiltration extends React.Component {
+export default class MainPage extends React.Component {
   render() {
     return(
       <DrawerLayout
