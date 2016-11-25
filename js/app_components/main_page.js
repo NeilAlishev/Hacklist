@@ -15,10 +15,18 @@ import HackathonsList from './hackathons_list.js';
 import FiltrationForm from './filtration_form.js';
 
 export default class MainPage extends React.Component {
+  constructor(props) {
+    // this class should contain state about displayed hackathons
+    // we should pass this state as a prop to HackathonsList component
+    super(props);
+    // wtf
+    this._onFiltration = () => this._onFiltration();
+  }
+
   render() {
     return(
       <DrawerLayout
-        ref={(view) => { this._drawerLayout = view; }}
+        ref={(drawer) => { this.drawer = drawer; }}
         drawerWidth={250}
         renderNavigationView={this._renderMenu.bind(this)}>
 
@@ -39,7 +47,7 @@ export default class MainPage extends React.Component {
             </Text>
         </View>
 
-        <FiltrationForm />
+        <FiltrationForm onFiltration={this._onFiltration} name='asdf'/>
 
         <View style={styles.menuFooter}>
         </View>
@@ -51,13 +59,19 @@ export default class MainPage extends React.Component {
     return (
       <TouchableOpacity
         hitSlop={{top: 15, left: 15, right: 15, bottom: 15}}
-        onPress={() => { this._drawerLayout.openDrawer() }}
+        onPress={() => { this.drawer.openDrawer() }}
         style={styles.menuButtonContainer}>
         <Image
           style={styles.menuButton}
           source={require('../resources/images/menu-button.png')} />
       </TouchableOpacity>
     )
+  }
+
+  _onFiltration(filtration_result) {
+    console.log("AFTER")
+    console.log(this)
+    // this.drawer.closeDrawer()
   }
 }
 
