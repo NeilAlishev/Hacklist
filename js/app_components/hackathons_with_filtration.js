@@ -10,29 +10,9 @@ import {
 } from 'react-native';
 
 import DrawerLayout from 'react-native-drawer-layout';
-import Form from 'tcomb-form-native';
 
 import HackathonsList from './hackathons_list.js';
-
-const City = Form.enums({
-  all: 'Все города',
-  kazan: 'Казань',
-  moscow: 'Москва',
-  saintPetersburg: 'Санкт-Петербург',
-  novosib: 'Новосибирск'
-});
-
-const HackListFiltrationCriteria = Form.struct({
-  city: City
-});
-
-const FormObject = Form.form.Form
-const formOptions =
-{fields:
-  {city:
-    {label: 'Город', nullOption: false}
-  }
-}
+import FiltrationForm from './filtration_form.js';
 
 export default class HackathonsWithFiltration extends React.Component {
   render() {
@@ -59,17 +39,7 @@ export default class HackathonsWithFiltration extends React.Component {
             </Text>
         </View>
 
-        <View style={styles.formContainer}>
-          <FormObject
-            ref="form"
-            type={HackListFiltrationCriteria}
-            value={{city: 'all'}}
-            options={formOptions}
-          />
-          <TouchableHighlight style={styles.formButton} onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={styles.formButtonText}>Применить</Text>
-          </TouchableHighlight>
-        </View>
+        <FiltrationForm />
 
         <View style={styles.menuFooter}>
         </View>
@@ -93,27 +63,6 @@ export default class HackathonsWithFiltration extends React.Component {
 
 
 const styles = StyleSheet.create({
-  formContainer: {
-    justifyContent: 'center',
-    marginTop: 0,
-    padding: 20,
-    backgroundColor: '#F9F9F9',
-  },
-  formButtonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
-  },
-  formButton: {
-    height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
   container: {
     flex: 1,
   },
