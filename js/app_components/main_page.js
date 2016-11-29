@@ -19,8 +19,8 @@ export default class MainPage extends React.Component {
     // this class should contain state about displayed hackathons
     // we should pass this state as a prop to HackathonsList component
     super(props);
-    // wtf
-    this._onFiltration = () => this._onFiltration();
+
+    this._onFiltrationCallback = this._onFiltrationCallback.bind(this);
   }
 
   render() {
@@ -47,7 +47,7 @@ export default class MainPage extends React.Component {
             </Text>
         </View>
 
-        <FiltrationForm onFiltration={this._onFiltration} name='asdf'/>
+        <FiltrationForm onFiltration={this._onFiltrationCallback}/>
 
         <View style={styles.menuFooter}>
         </View>
@@ -68,10 +68,8 @@ export default class MainPage extends React.Component {
     )
   }
 
-  _onFiltration(filtration_result) {
-    console.log("AFTER")
-    console.log(this)
-    // this.drawer.closeDrawer()
+  _onFiltrationCallback(filtration_result) {
+    this.drawer.closeDrawer()
   }
 }
 

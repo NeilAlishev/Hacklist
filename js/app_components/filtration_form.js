@@ -38,18 +38,17 @@ const formOptions = {
 export default class FiltrationForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this._onFormSubmit = this._onFormSubmit.bind(this);
   }
 
   _onFormSubmit() {
     // this method is called inside main_page.js when filtration happens
     // filtration results are passed as an argument
-    // this.props.onFiltration()
+    this.props.onFiltration()
   }
 
   render() {
-    console.log("BEFORE")
-    this.props.onFiltration()
-
     return(
       <View style={styles.formContainer}>
         <FormObject
