@@ -27,10 +27,11 @@ const HackListFiltrationCriteria = Form.struct({
 // form itself
 const FormObject = Form.form.Form
 
-const formOptions =
-{fields:
-  {city:
-    {label: 'Город', nullOption: false}
+const formOptions = {
+  fields: {
+    city: {
+      label: 'Город', nullOption: false
+    }
   }
 }
 
