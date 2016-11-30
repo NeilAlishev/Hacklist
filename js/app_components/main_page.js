@@ -11,26 +11,47 @@ import {
 
 import DrawerLayout from 'react-native-drawer-layout';
 
+import Environment from '../environment/environment.js';
+import Rest from '../rest/rest.js';
 import HackathonsList from './hackathons_list.js';
 import FiltrationForm from './filtration_form.js';
 
 export default class MainPage extends React.Component {
   constructor(props) {
-    // this class should contain state about displayed hackathons
-    // we should pass this state as a prop to HackathonsList component
     super(props);
+
+    this.state = {hackathonsToDisplay: undefined}
 
     this._onFiltrationCallback = this._onFiltrationCallback.bind(this);
   }
 
+  componentDidMount() {
+    let that = this;
+
+    fetch(`${Environment.BASE_URL}${Rest.hack_list}`)
+      .then((response) => response.json())
+      .then((hack_list) => {
+        that.setState({hackathonsToDisplay: hack_list.response})
+      })
+      .catch((error) => console.error(error))
+      .done();
+  }
+
   render() {
+    let hackathonsToDisplay = this.state.hackathonsToDisplay
+
+    if(!hackathonsToDisplay){
+      // put spinner here...
+      return <Text>No data yet</Text>;
+    }
+
     return(
       <DrawerLayout
         ref={(drawer) => { this.drawer = drawer; }}
         drawerWidth={250}
         renderNavigationView={this._renderMenu.bind(this)}>
 
-        <HackathonsList />
+        <HackathonsList hackathonsToDisplay={hackathonsToDisplay} />
 
         {this._renderMenuButton()}
       </DrawerLayout>
