@@ -9,15 +9,10 @@ import {
 import Form from 'tcomb-form-native';
 
 import HackathonList from './hackathons_list.js';
+import CityEnum from '../enums/city_enum.js';
 
 // cities enumeration
-const City = Form.enums({
-  all: 'Все города',
-  kazan: 'Казань',
-  moscow: 'Москва',
-  saintPetersburg: 'Санкт-Петербург',
-  novosib: 'Новосибирск'
-});
+const City = Form.enums(CityEnum);
 
 // model for the form
 const HackListFiltrationCriteria = Form.struct({
@@ -43,9 +38,8 @@ export default class FiltrationForm extends React.Component {
   }
 
   _onFormSubmit() {
-    // this method is called inside main_page.js when filtration happens
-    // filtration results are passed as an argument
-    this.props.onFiltration()
+    // passing filtration query object back to main_page component.
+    this.props.onFiltration(this.refs.form.getValue())
   }
 
   render() {

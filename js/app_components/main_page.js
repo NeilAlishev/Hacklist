@@ -15,6 +15,7 @@ import Environment from '../environment/environment.js';
 import Rest from '../rest/rest.js';
 import HackathonsList from './hackathons_list.js';
 import FiltrationForm from './filtration_form.js';
+import HackathonFilters from '../util/hackathon_filters.js';
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class MainPage extends React.Component {
     let hackathonsToDisplay = this.state.hackathonsToDisplay
 
     if(!hackathonsToDisplay){
-      // put spinner here...
+      // TODO: PUT SPINNER HERE
       return <Text>No data yet</Text>;
     }
 
@@ -89,8 +90,20 @@ export default class MainPage extends React.Component {
     )
   }
 
-  _onFiltrationCallback(filtration_result) {
-    this.drawer.closeDrawer()
+  _onFiltrationCallback(filtrationQuery) {
+    let filtrationResult = HackathonFilters
+      .filterByQuery(
+        this.state.hackathonsToDisplay,
+        filtrationQuery
+      )
+
+    this.setState(
+      {
+        hackathonsToDisplay: filtrationResult
+      }
+    );
+
+    this.drawer.closeDrawer();
   }
 }
 
