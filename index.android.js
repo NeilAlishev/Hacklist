@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import HackathonsWithFiltration from
-  './js/app_components/hackathons_with_filtration.js';
+  './js/app_components/main_page.js';
 
 export default class hacklist extends React.Component {
   render() {

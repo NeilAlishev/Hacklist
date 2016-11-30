@@ -35,8 +35,8 @@ export default class HackathonRow extends React.Component {
     );
   }
 
-  _onPress(rowData) {
-    console.log(rowData+' pressed');
+  _onPress(hackTitle) {
+    console.log(hackTitle + ' pressed');
   }
 }
 

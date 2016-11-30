@@ -10,39 +10,49 @@ import {
 } from 'react-native';
 
 import DrawerLayout from 'react-native-drawer-layout';
-import Form from 'tcomb-form-native';
 
+import Environment from '../environment/environment.js';
+import Rest from '../rest/rest.js';
 import HackathonsList from './hackathons_list.js';
+import FiltrationForm from './filtration_form.js';
+import HackathonFilters from '../util/hackathon_filters.js';
 
-const City = Form.enums({
-  all: 'Все города',
-  kazan: 'Казань',
-  moscow: 'Москва',
-  saintPetersburg: 'Санкт-Петербург',
-  novosib: 'Новосибирск'
-});
+export default class MainPage extends React.Component {
+  constructor(props) {
+    super(props);
 
-const HackListFiltrationCriteria = Form.struct({
-  city: City
-});
+    this.state = {hackathonsToDisplay: undefined}
 
-const FormObject = Form.form.Form
-const formOptions =
-{fields:
-  {city:
-    {label: 'Город', nullOption: false}
+    this._onFiltrationCallback = this._onFiltrationCallback.bind(this);
   }
-}
 
-export default class HackathonsWithFiltration extends React.Component {
+  componentDidMount() {
+    let that = this;
+
+    fetch(`${Environment.BASE_URL}${Rest.hack_list}`)
+      .then((response) => response.json())
+      .then((hack_list) => {
+        that.setState({hackathonsToDisplay: hack_list.response})
+      })
+      .catch((error) => console.error(error))
+      .done();
+  }
+
   render() {
+    let hackathonsToDisplay = this.state.hackathonsToDisplay
+
+    if(!hackathonsToDisplay){
+      // TODO: PUT SPINNER HERE
+      return <Text>No data yet</Text>;
+    }
+
     return(
       <DrawerLayout
-        ref={(view) => { this._drawerLayout = view; }}
+        ref={(drawer) => { this.drawer = drawer; }}
         drawerWidth={250}
         renderNavigationView={this._renderMenu.bind(this)}>
 
-        <HackathonsList />
+        <HackathonsList hackathonsToDisplay={hackathonsToDisplay} />
 
         {this._renderMenuButton()}
       </DrawerLayout>
@@ -59,17 +69,7 @@ export default class HackathonsWithFiltration extends React.Component {
             </Text>
         </View>
 
-        <View style={styles.formContainer}>
-          <FormObject
-            ref="form"
-            type={HackListFiltrationCriteria}
-            value={{city: 'all'}}
-            options={formOptions}
-          />
-          <TouchableHighlight style={styles.formButton} onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={styles.formButtonText}>Применить</Text>
-          </TouchableHighlight>
-        </View>
+        <FiltrationForm onFiltration={this._onFiltrationCallback}/>
 
         <View style={styles.menuFooter}>
         </View>
@@ -81,7 +81,7 @@ export default class HackathonsWithFiltration extends React.Component {
     return (
       <TouchableOpacity
         hitSlop={{top: 15, left: 15, right: 15, bottom: 15}}
-        onPress={() => { this._drawerLayout.openDrawer() }}
+        onPress={() => { this.drawer.openDrawer() }}
         style={styles.menuButtonContainer}>
         <Image
           style={styles.menuButton}
@@ -89,31 +89,26 @@ export default class HackathonsWithFiltration extends React.Component {
       </TouchableOpacity>
     )
   }
+
+  _onFiltrationCallback(filtrationQuery) {
+    let filtrationResult = HackathonFilters
+      .filterByQuery(
+        this.state.hackathonsToDisplay,
+        filtrationQuery
+      )
+
+    this.setState(
+      {
+        hackathonsToDisplay: filtrationResult
+      }
+    );
+
+    this.drawer.closeDrawer();
+  }
 }
 
 
 const styles = StyleSheet.create({
-  formContainer: {
-    justifyContent: 'center',
-    marginTop: 0,
-    padding: 20,
-    backgroundColor: '#F9F9F9',
-  },
-  formButtonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
-  },
-  formButton: {
-    height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
   container: {
     flex: 1,
   },

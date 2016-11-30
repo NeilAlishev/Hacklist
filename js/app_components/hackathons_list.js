@@ -3,29 +3,21 @@ import {
   View,
   StyleSheet,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
+  ListView
 } from 'react-native';
 
 import HackathonRow from './hackathon_row.js';
-import Environment from '../environment/environment.js';
-import Rest from '../rest/rest.js';
 
-var GiftedListView = require('react-native-gifted-listview');
-var that;
+var ds;
 
 export default class HackathonsList extends React.Component {
   constructor(props) {
     super(props);
-  }
 
-  _onFetch(page, callback, options) {
-    fetch(`${Environment.BASE_URL}${Rest.hack_list}`)
-      .then((response) => response.json())
-      .then((hack_list) => {
-          callback(hack_list.response);
-      })
-      .catch((error) => console.error(error))
-      .done();
+    ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+    this._dataSource = this._dataSource.bind(this);
   }
 
   _renderRowView(rowData) {
@@ -34,99 +26,26 @@ export default class HackathonsList extends React.Component {
     );
   }
 
-  _renderEmptyView(refreshCallback) {
-    return (
-      <View style={customStyles.defaultView}>
-        <Text style={customStyles.defaultViewTitle}>
-          Sorry, there is no content to display
-        </Text>
-
-        <TouchableHighlight
-          underlayColor='#c8c7cc'
-          onPress={refreshCallback}
-        >
-          <Text>
-            ↻
-          </Text>
-        </TouchableHighlight>
-      </View>
-    );
+  _dataSource() {
+    // data comes from main_page component.
+    return ds.cloneWithRows(this.props.hackathonsToDisplay)
   }
 
   render() {
-    that = this;
-
     return (
       <View>
         <View style={styles.navBar}>
           <Text style={styles.navBarTitle}>Hacklist</Text>
         </View>
 
-        <GiftedListView
-          rowView={this._renderRowView}
-          onFetch={this._onFetch}
-          firstLoader={true}
-
-          refreshable={true}
-          refreshableViewHeight={50}
-          refreshableDistance={40}
-
-          refreshableTintColor="black"
-
-          customStyles={customStyles}
-
-          emptyView={this._renderEmptyView}
-
-          enableEmptySections={true}
+        <ListView
+          dataSource={this._dataSource()}
+          renderRow={this._renderRowView}
         />
       </View>
     );
   }
 }
-
-const customStyles = StyleSheet.create({
-  separator: {
-    height: 1,
-    backgroundColor: '#CCC'
-  },
-  refreshableView: {
-    height: 50,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  actionsLabel: {
-    fontSize: 20,
-    color: '#007aff',
-  },
-  paginationView: {
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFF',
-  },
-  defaultView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  defaultViewTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 15,
-  },
-  row: {
-    padding: 10,
-    height: 44,
-  },
-  header: {
-    backgroundColor: '#50a4ff',
-    padding: 10,
-  },
-  headerTitle: {
-    color: '#fff',
-  }
-});
 
 const styles = StyleSheet.create({
   navBar: {
@@ -140,9 +59,5 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     marginTop: 12,
-  },
-  row: {
-    padding: 10,
-    height: 44,
   }
 });
