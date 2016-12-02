@@ -6,14 +6,14 @@ import {
   View
 } from 'react-native';
 
-import HackathonsWithFiltration from
+import MainPage from
   './js/app_components/main_page.js';
 
 export default class hacklist extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <HackathonsWithFiltration />
+        <MainPage />
       </View>
     );
   }
