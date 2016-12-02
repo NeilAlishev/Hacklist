@@ -42,7 +42,7 @@ export default class MainPage extends React.Component {
     let hackathonsToDisplay = this.state.hackathonsToDisplay
 
     if(!hackathonsToDisplay){
-      // TODO: PUT SPINNER HERE
+      // TODO: PUT SPINNER HERE.
       return <Text>No data yet</Text>;
     }
 
