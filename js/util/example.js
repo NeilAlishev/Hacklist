@@ -1,4 +1,4 @@
-import CityEnum from '../enums/city_enum.js'
+import CityEnum from '../enums/example.js'
 
 export default HackathonFilters = {
   filterByQuery: function(allHackathons, filtrationQuery) {
