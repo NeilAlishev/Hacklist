@@ -7,7 +7,7 @@ import {
   ListView
 } from 'react-native';
 
-import HackathonRow from './hackathon_row.js';
+import HackathonRow from './hackathon_row';
 
 var ds;
 
@@ -27,15 +27,16 @@ export default class HackathonsList extends React.Component {
   }
 
   _dataSource() {
-    // data comes from main_page component.
-    return ds.cloneWithRows(this.props.hackathonsToDisplay)
+    return ds.cloneWithRows(this.props.hacks)
   }
 
   render() {
     return (
       <View>
         <View style={styles.navBar}>
-          <Text style={styles.navBarTitle}>Hacklist</Text>
+          <Text style={styles.navBarTitle}>
+            Hacklist
+          </Text>
         </View>
 
         <ListView

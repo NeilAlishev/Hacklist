@@ -14,6 +14,7 @@ export default class HackathonRow extends React.Component {
 
   render() {
     let hack = this.props.rowData;
+    let date = new Date(hack.date).toString();
 
     return (
       <TouchableHighlight
@@ -23,12 +24,12 @@ export default class HackathonRow extends React.Component {
       >
         <View style={styles.container}>
           <Image source={require('../resources/images/test_image.png')}
-            style={styles.logo}
+                 style={styles.logo}
           />
           <Text style={styles.text}>
             <Text style={styles.title}>{hack.title}{'\n'}</Text>
             <Text>Город: {hack.city}{'\n'}</Text>
-            <Text>Дата проведения: 20.02.1950</Text>
+            <Text>Дата проведения: {date}</Text>
           </Text>
         </View>
       </TouchableHighlight>
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
   },
   row: {
     padding: 10,
-    height: 80,
+    height: 100,
   },
   logo: {
     height: 60,

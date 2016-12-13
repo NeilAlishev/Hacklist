@@ -7,13 +7,13 @@ import {
 } from 'react-native';
 
 import MainPage from
-  './js/app_components/main_page.js';
+  './js/app_components/main_page';
 
 export default class hacklist extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <MainPage />
+        <MainPage/>
       </View>
     );
   }

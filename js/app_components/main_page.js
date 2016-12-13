@@ -3,39 +3,38 @@ import {
   Text
 } from 'react-native';
 
-import Environment from '../environment/environment.js';
-import Rest from '../rest/rest.js';
-import HackathonsList from './hackathons_list.js';
+import Environment from '../environment/environment';
+import Rest from '../rest/rest';
+import HackathonsList from './hackathons_list';
 
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {hackathonsToDisplay: undefined}
+    this.state = {
+      hacks: undefined
+    }
   }
 
-  componentDidMount() {
-    let that = this;
-
-    fetch(`${Environment.BASE_URL}${Rest.hack_list}`)
-      .then((response) => response.json())
-      .then((hack_list) => {
-        that.setState({hackathonsToDisplay: hack_list.response})
+  componentWillMount() {
+    fetch(Environment.BASE_URL + Rest.hacks)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          hacks: data.response
+        })
       })
       .catch((error) => console.error(error))
       .done();
   }
 
   render() {
-    let hackathonsToDisplay = this.state.hackathonsToDisplay
-
-    if(!hackathonsToDisplay){
+    let hacks = this.state.hacks
+    if (!hacks) {
       // TODO: PUT SPINNER HERE
       return <Text>No data yet</Text>;
     }
-
-    return(
-      <HackathonsList hackathonsToDisplay={hackathonsToDisplay} />
+    return (
+      <HackathonsList hacks={hacks}/>
     );
   }
 }
