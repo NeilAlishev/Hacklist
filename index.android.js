@@ -3,19 +3,30 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
-import MainPage from
-  './js/app_components/main_page';
+import AuthPage from './js/app_components/auth';
+import MainPage from './js/app_components/main_page';
 
 export default class hacklist extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <MainPage/>
-      </View>
+      <Navigator
+        style={styles.container}
+        initialRoute={{id: 'auth'}}
+        renderScene={this.navigatorRenderScene}/>
     );
+  }
+
+  navigatorRenderScene(route, navigator) {
+    switch (route.id) {
+      case 'auth':
+        return (<AuthPage navigator={navigator}/>);
+      case 'main':
+        return (<MainPage navigator={navigator}/>);
+    }
   }
 }
 
