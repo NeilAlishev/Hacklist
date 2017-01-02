@@ -1,3 +1,3 @@
-export default Rest = {
+export default Api = {
   hacks: '/api/hacks/'
 }
