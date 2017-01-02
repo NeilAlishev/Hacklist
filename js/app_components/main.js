@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 import Environment from '../environment/environment';
-import Rest from '../rest/rest';
+import Api from '../enums/api';
 import HackathonsList from './hackathons_list';
 
 export default class MainPage extends React.Component {
@@ -16,7 +16,7 @@ export default class MainPage extends React.Component {
   }
 
   componentWillMount() {
-    fetch(Environment.BASE_URL + Rest.hacks)
+    fetch(Environment.BASE_URL + Api.hacks)
       .then(response => response.json())
       .then(data => {
         this.setState({

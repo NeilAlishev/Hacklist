@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  WebView
+  WebView,
+  AsyncStorage
 } from 'react-native';
 
 import Environment from '../environment/environment';
@@ -47,7 +48,7 @@ function onNavigationStateChangeCallback(state) {
     })
     .then(response => response.json())
     .then(token => {
-      console.log(token);
+      AsyncStorage.setItem('token', JSON.stringify(token));
       this.props.navigator.push({
         id: 'main'
       });
