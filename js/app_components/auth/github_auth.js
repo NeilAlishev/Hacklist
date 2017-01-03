@@ -4,9 +4,9 @@ import {
   AsyncStorage
 } from 'react-native';
 
-import Environment from '../environment/environment';
+import Environment from '../../environment/environment';
 
-export default class AuthPage extends React.Component {
+export default class GithubAuthPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

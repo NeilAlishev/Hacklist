@@ -4,49 +4,34 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator,
   AsyncStorage
 } from 'react-native';
 
-import AuthPage from './js/app_components/auth';
+import SignInPage from './js/app_components/auth/sign_in';
 import MainPage from './js/app_components/main';
-import Route from './js/enums/route';
 
 export default class hacklist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialRoute: undefined
+      nextComponent: undefined
     };
     //TODO check if token is actual
     AsyncStorage.getItem('token', (err, res) => {
+      console.log('token: ', res);
       this.setState({
-        initialRoute: res == null ? Route.auth : Route.main
+        nextComponent: res == null ? <SignInPage/> : <MainPage/>
       });
     });
   }
 
   render() {
-    const route = this.state.initialRoute;
-    //TODO add spinner
-    if (!route) {
+    const nextComponent = this.state.nextComponent;
+    // TODO add spinner
+    if (!nextComponent) {
       return <Text>Please, wait</Text>;
     }
-    return (
-      <Navigator
-        style={styles.container}
-        initialRoute={{id: route}}
-        renderScene={this.navigatorRenderScene}/>
-    );
-  }
-
-  navigatorRenderScene(route, navigator) {
-    switch (route.id) {
-      case Route.auth:
-        return (<AuthPage navigator={navigator}/>);
-      case Route.main:
-        return (<MainPage navigator={navigator}/>);
-    }
+    return nextComponent;
   }
 }
 

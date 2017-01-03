@@ -1,4 +1,6 @@
 export default Route = {
-  auth: 'auth',
+  choose: 'choose',
+  githubAuth: 'githubAuth',
+  vkAuth: 'vkAuth',
   main: 'main'
 }
