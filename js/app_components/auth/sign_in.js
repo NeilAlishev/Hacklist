@@ -8,6 +8,7 @@ import Route from '../../enums/route';
 
 import ChoosePage from './choose';
 import GithubAuthPage from './github_auth';
+import VkAuthPage from './vk_auth';
 import MainPage from '../main';
 
 export default class SignInPage extends React.Component {
@@ -26,6 +27,8 @@ export default class SignInPage extends React.Component {
         return <ChoosePage navigator={navigator}/>;
       case Route.githubAuth:
         return <GithubAuthPage navigator={navigator} />;
+      case Route.vkAuth:
+        return <VkAuthPage navigator={navigator} />;
       case Route.main:
         return (<MainPage navigator={navigator}/>);
     }
