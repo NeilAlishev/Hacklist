@@ -21,6 +21,7 @@ export default class VkAuthPage extends React.Component {
         onNavigationStateChange={
           onNavigationStateChangeCallback.bind(this)
         }
+        renderError={renderErrorCallback.bind(this)}
       />
     );
   }
@@ -45,4 +46,9 @@ function onNavigationStateChangeCallback(state) {
       .catch((error) => console.error(error))
       .done();
   }
+}
+
+// temporary workaround
+function renderErrorCallback() {
+  return null;
 }
