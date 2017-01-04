@@ -42,6 +42,7 @@ export default class HackathonsList extends React.Component {
         <ListView
           dataSource={this._dataSource()}
           renderRow={this._renderRowView}
+          enableEmptySections={true}
         />
       </View>
     );
