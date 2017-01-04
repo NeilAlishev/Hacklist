@@ -17,12 +17,15 @@ export default class GithubAuthPage extends React.Component {
   render() {
     let requestUri = Environment.githubOAuth + Environment.githubClientId;
     return (
+      // TODO: back button
       <WebView
         source={{uri: requestUri}}
         onNavigationStateChange={
           onNavigationStateChangeCallback.bind(this)
         }
         renderError={renderErrorCallback.bind(this)}
+        startInLoadingState={true}
+        contentInset={{top: 40, left: 0, bottom: 0, right: 0}}
       />
     );
   }
