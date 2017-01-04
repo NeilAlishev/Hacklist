@@ -16,12 +16,15 @@ export default class VkAuthPage extends React.Component {
 
   render() {
     return (
+      // TODO: back button
       <WebView
         source={{uri: Environment.vkOAuth}}
         onNavigationStateChange={
           onNavigationStateChangeCallback.bind(this)
         }
         renderError={renderErrorCallback.bind(this)}
+        startInLoadingState={true}
+        contentInset={{top: 40, left: 0, bottom: 0, right: 0}}
       />
     );
   }
