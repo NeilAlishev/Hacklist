@@ -1,37 +1,14 @@
 import React from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  AsyncStorage
+  StyleSheet
 } from 'react-native';
 
-import SignInPage from './js/app_components/auth/sign_in';
-import MainPage from './js/app_components/main';
+import InitialDispatcher from './js/app_components/initial_dispatcher';
 
 export default class hacklist extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nextComponent: undefined
-    };
-    //TODO check if token is actual
-    AsyncStorage.getItem('token', (err, res) => {
-      console.log('token: ', res);
-      this.setState({
-        nextComponent: res == null ? <SignInPage/> : <MainPage/>
-      });
-    });
-  }
-
   render() {
-    const nextComponent = this.state.nextComponent;
-    // TODO add spinner
-    if (!nextComponent) {
-      return <Text>Please, wait</Text>;
-    }
-    return nextComponent;
+    return <InitialDispatcher/>;
   }
 }
 

@@ -39,7 +39,7 @@ function onNavigationStateChangeCallback(state) {
       .then(response => response.json())
       .then(token => {
         AsyncStorage.setItem('token', JSON.stringify(token));
-        this.props.navigator.push({
+        this.props.navigator.resetTo({
           id: 'main'
         });
       })
