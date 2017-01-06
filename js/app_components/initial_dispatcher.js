@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
-  View,
   AsyncStorage,
   Navigator
 } from 'react-native';
@@ -19,49 +17,44 @@ export default class InitialDispatcher extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      token: undefined
     };
-  }
 
-  componentWillMount() {
     //TODO check if token is actual
     AsyncStorage.getItem('token', (err, res) => {
       this.setState({
         token: res,
-        isLoading: false
       });
     });
   }
 
   render() {
-    if(this.state.isLoading) {
+    const token = this.state.token;
+    if(token === undefined) {
       // TODO: add spinner here.
-      return (
-        <View><Text>Loading...</Text></View>
-      );
-    } else {
-      let initialRoute = this.state.token == null ? Route.choose : Route.main
-
-      return (
-        <Navigator
-          style={styles.container}
-          initialRoute={{id: initialRoute}}
-          renderScene={this._navigatorRenderScene}/>
-      );
+      return <Text>Loading...</Text>;
     }
+    console.log('token', token);
+    const initialRoute = token == null ? Route.choose : Route.main;
+    return (
+      <Navigator
+        style={styles.container}
+        initialRoute={{id: initialRoute}}
+        renderScene={navigatorRenderScene}/>
+    );
   }
+}
 
-  _navigatorRenderScene(route, navigator) {
-    switch (route.id) {
-      case Route.choose:
-        return <ChoosePage navigator={navigator}/>;
-      case Route.githubAuth:
-        return <GithubAuthPage navigator={navigator} />;
-      case Route.vkAuth:
-        return <VkAuthPage navigator={navigator} />;
-      case Route.main:
-        return (<MainPage navigator={navigator}/>);
-    }
+function navigatorRenderScene(route, navigator) {
+  switch (route.id) {
+    case Route.choose:
+      return <ChoosePage navigator={navigator}/>;
+    case Route.githubAuth:
+      return <GithubAuthPage navigator={navigator}/>;
+    case Route.vkAuth:
+      return <VkAuthPage navigator={navigator}/>;
+    case Route.main:
+      return (<MainPage navigator={navigator}/>);
   }
 }
 
