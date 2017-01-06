@@ -23,7 +23,7 @@ export default class GithubAuthPage extends React.Component {
         onNavigationStateChange={
           onNavigationStateChangeCallback.bind(this)
         }
-        renderError={renderErrorCallback.bind(this)}
+        renderError={renderErrorCallback}
         startInLoadingState={true}
         contentInset={{top: 40, left: 0, bottom: 0, right: 0}}
       />
