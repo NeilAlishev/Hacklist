@@ -1,12 +1,9 @@
 import React from 'react';
 import {
-  Text,
-  AsyncStorage,
-  ActivityIndicator,
-  StyleSheet
+  AsyncStorage
 } from 'react-native';
 
-import HackathonsList from './hackathons_list';
+import HackathonList from './hack_list';
 import ChoosePage from './auth/choose';
 import Spinner from './helpers/spinner';
 
@@ -38,7 +35,7 @@ export default class MainPage extends React.Component {
     const error = this.state.error
 
     if (hacks) {
-      return <HackathonsList hacks={hacks}/>;
+      return <HackathonList hacks={hacks}/>;
     }
     if (error) {
       return <ChoosePage navigator={this.props.navigator} error={true}/>;
