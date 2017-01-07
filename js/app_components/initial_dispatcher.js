@@ -21,7 +21,7 @@ export default class InitialDispatcher extends React.Component {
     };
 
     //TODO check if token is actual
-    AsyncStorage.getItem('token', (err, res) => {
+    AsyncStorage.getItem('client_token', (err, res) => {
       this.setState({
         token: res,
       });

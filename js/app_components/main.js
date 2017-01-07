@@ -13,9 +13,7 @@ export default class MainPage extends React.Component {
     this.state = {
       hacks: undefined
     }
-  }
 
-  componentWillMount() {
     fetch(Environment.BASE_URL + Api.hacks)
       .then(response => response.json())
       .then(data => {
