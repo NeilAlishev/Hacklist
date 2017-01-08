@@ -34,7 +34,6 @@ export default class InitialDispatcher extends React.Component {
       // TODO: add spinner here.
       return <Text>Loading...</Text>;
     }
-    console.log('token', token);
     const initialRoute = token == null ? Route.choose : Route.main;
     return (
       <Navigator
