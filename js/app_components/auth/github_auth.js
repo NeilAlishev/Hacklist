@@ -9,18 +9,16 @@ import Environment from '../../environment/environment';
 export default class GithubAuthPage extends React.Component {
   constructor(props) {
     super(props);
-    //TODO replace with randomly generated string
     this.state = {
-      client_token: '12345'
+      client_token: guid()
     }
   }
 
   render() {
-    const requestUri = buildUri(this.state.client_token);
     return (
       // TODO: back button
       <WebView
-        source={{uri: requestUri}}
+        source={{uri: buildUri(this.state.client_token)}}
         onNavigationStateChange={
           onNavigationStateChangeCallback.bind(this)
         }
@@ -29,6 +27,15 @@ export default class GithubAuthPage extends React.Component {
       />
     );
   }
+}
+
+function guid() {
+  const pattern = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+  return pattern.replace(/[xy]/g, c => {
+    const r = Math.random()*16|0;
+    const v = c == 'x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+  });
 }
 
 function buildUri(client_token) {
