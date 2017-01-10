@@ -13,16 +13,18 @@ export default class MainPage extends React.Component {
     this.state = {
       hacks: undefined
     }
-
-    fetch(Environment.BASE_URL + Api.hacks)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          hacks: data.response
+    AsyncStorage.getItem('client_token', (err, token) => {
+      //TODO add a loop
+      fetch(Environment.BASE_URL + Api.hacks + token)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            hacks: data.response
+          })
         })
-      })
-      .catch((error) => console.error(error))
-      .done();
+        .catch((error) => console.error(error))
+        .done();
+    });
   }
 
   render() {
