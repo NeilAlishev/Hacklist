@@ -1,3 +1,3 @@
 export default Api = {
-  hacks: '/api/hacks/'
+  hacks: '/api/hacks?token='
 }
