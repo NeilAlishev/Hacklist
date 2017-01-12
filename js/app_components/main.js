@@ -14,11 +14,12 @@ export default class MainPage extends React.Component {
     this.state = {
       hacks: undefined
     }
+
     AsyncStorage.getItem('client_token', (err, token) => {
-      //TODO add a loop
       fetch(Environment.BASE_URL + Api.hacks + token)
         .then(response => response.json())
         .then(data => {
+          // TODO: handle error response from the server.
           this.setState({
             hacks: data.response
           })
