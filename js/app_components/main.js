@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  Text
+  Text,
+  AsyncStorage
 } from 'react-native';
 
 import Environment from '../environment/environment';

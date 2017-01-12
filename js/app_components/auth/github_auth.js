@@ -5,12 +5,13 @@ import {
 } from 'react-native';
 
 import Environment from '../../environment/environment';
+import AuthUtils from '../../util/auth_utils'
 
 export default class GithubAuthPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      client_token: guid()
+      client_token: AuthUtils.generateUID()
     }
   }
 
@@ -27,15 +28,6 @@ export default class GithubAuthPage extends React.Component {
       />
     );
   }
-}
-
-function guid() {
-  const pattern = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
-  return pattern.replace(/[xy]/g, c => {
-    const r = Math.random()*16|0;
-    const v = c == 'x' ? r : (r&0x3|0x8);
-    return v.toString(16);
-  });
 }
 
 function buildUri(client_token) {
