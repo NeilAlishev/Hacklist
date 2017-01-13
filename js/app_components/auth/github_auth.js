@@ -35,7 +35,7 @@ function buildUri(client_token) {
 }
 
 function onNavigationStateChangeCallback(state) {
-  const redirect = state.url.search('code') !== -1;
+  const redirect = state.url.search('code=') !== -1;
   if (redirect) {
     AsyncStorage.setItem(
       'client_token', JSON.stringify(this.state.client_token)

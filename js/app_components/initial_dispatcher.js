@@ -8,10 +8,10 @@ import {
 
 import Route from '../enums/route';
 
+import MainPage from './main';
 import ChoosePage from './auth/choose';
 import GithubAuthPage from './auth/github_auth';
 import VkAuthPage from './auth/vk_auth';
-import MainPage from './main';
 
 export default class InitialDispatcher extends React.Component {
   constructor(props) {
@@ -20,7 +20,6 @@ export default class InitialDispatcher extends React.Component {
       token: undefined
     };
 
-    //TODO check if token is actual
     AsyncStorage.getItem('client_token', (err, res) => {
       this.setState({
         token: res,
@@ -37,7 +36,6 @@ export default class InitialDispatcher extends React.Component {
     const initialRoute = token == null ? Route.choose : Route.main;
     return (
       <Navigator
-        style={styles.container}
         initialRoute={{id: initialRoute}}
         renderScene={navigatorRenderScene}/>
     );
@@ -56,10 +54,3 @@ function navigatorRenderScene(route, navigator) {
       return (<MainPage navigator={navigator}/>);
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-  }
-});

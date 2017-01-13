@@ -31,7 +31,7 @@ export default class VkAuthPage extends React.Component {
 }
 
 function buildUri(client_token) {
-  return Environment.vkOauth + 'state=' + client_token;
+  return Environment.vkOAuth + 'state=' + client_token;
 }
 
 function onNavigationStateChangeCallback(state) {
