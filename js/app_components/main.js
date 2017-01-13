@@ -7,6 +7,7 @@ import {
 import Environment from '../environment/environment';
 import Api from '../enums/api';
 import HackathonsList from './hackathons_list';
+import ErrorPage from './error_page';
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -19,10 +20,17 @@ export default class MainPage extends React.Component {
       fetch(Environment.BASE_URL + Api.hacks + token)
         .then(response => response.json())
         .then(data => {
-          // TODO: handle error response from the server.
-          this.setState({
-            hacks: data.response
-          })
+          if(data.errorMessage) {
+            this.setState({
+              hacks: null,
+              errorMessage: data.errorMessage
+            });
+          } else {
+            this.setState({
+              hacks: data.response,
+              errorMessage: null
+            });
+          }
         })
         .catch((error) => console.error(error))
         .done();
@@ -31,9 +39,15 @@ export default class MainPage extends React.Component {
 
   render() {
     let hacks = this.state.hacks
+    let errorMessage = this.state.errorMessage
+
     if (!hacks) {
-      // TODO: PUT SPINNER HERE
-      return <Text>No data yet</Text>;
+      if(errorMessage) {
+        return <ErrorPage message={errorMessage}/>
+      } else {
+        // TODO: PUT SPINNER HERE
+        return <Text>No data yet</Text>;
+      }
     }
     return (
       <HackathonsList hacks={hacks}/>
