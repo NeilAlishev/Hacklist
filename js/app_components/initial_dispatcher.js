@@ -13,7 +13,7 @@ import GithubAuthPage from './auth/github_auth';
 import VkAuthPage from './auth/vk_auth';
 import MainPage from './main';
 
-import Spinner from './spinner';
+import Spinner from './helpers/spinner';
 
 export default class InitialDispatcher extends React.Component {
   constructor(props) {
