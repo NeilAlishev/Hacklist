@@ -13,6 +13,8 @@ import GithubAuthPage from './auth/github_auth';
 import VkAuthPage from './auth/vk_auth';
 import MainPage from './main';
 
+import Spinner from './spinner';
+
 export default class InitialDispatcher extends React.Component {
   constructor(props) {
     super(props);
@@ -30,10 +32,11 @@ export default class InitialDispatcher extends React.Component {
 
   render() {
     const token = this.state.token;
+
     if(token === undefined) {
-      // TODO: add spinner here.
-      return <Text>Loading...</Text>;
+      return <Spinner/>
     }
+
     const initialRoute = token == null ? Route.choose : Route.main;
     return (
       <Navigator

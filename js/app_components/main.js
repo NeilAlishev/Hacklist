@@ -1,13 +1,17 @@
 import React from 'react';
 import {
   Text,
-  AsyncStorage
+  AsyncStorage,
+  ActivityIndicator,
+  StyleSheet
 } from 'react-native';
 
 import Environment from '../environment/environment';
 import Api from '../enums/api';
 import HackathonsList from './hackathons_list';
-import ErrorPage from './error_page';
+
+import ErrorPage from './helpers/error_page';
+import Spinner from './helpers/spinner';
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -20,17 +24,10 @@ export default class MainPage extends React.Component {
       fetch(Environment.BASE_URL + Api.hacks + token)
         .then(response => response.json())
         .then(data => {
-          if(data.errorMessage) {
-            this.setState({
-              hacks: null,
-              errorMessage: data.errorMessage
-            });
-          } else {
-            this.setState({
-              hacks: data.response,
-              errorMessage: null
-            });
-          }
+          this.setState({
+            hacks: data.response,
+            errorMessage: data.errorMessage
+          });
         })
         .catch((error) => console.error(error))
         .done();
@@ -45,8 +42,7 @@ export default class MainPage extends React.Component {
       if(errorMessage) {
         return <ErrorPage message={errorMessage}/>
       } else {
-        // TODO: PUT SPINNER HERE
-        return <Text>No data yet</Text>;
+        return <Spinner/>
       }
     }
     return (
