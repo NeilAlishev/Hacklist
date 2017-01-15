@@ -36,7 +36,6 @@ export default class InitialDispatcher extends React.Component {
     const initialRoute = token == null ? Route.chooseAuth : Route.main;
     return (
       <Navigator
-        style={styles.container}
         initialRoute={{id: initialRoute}}
         renderScene={navigatorRenderScene}/>
     );
@@ -55,10 +54,3 @@ function navigatorRenderScene(route, navigator) {
       return (<MainPage navigator={navigator}/>);
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-  }
-});
