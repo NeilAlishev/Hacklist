@@ -4,8 +4,10 @@ import {
   AsyncStorage
 } from 'react-native';
 
+import AuthUtils from '../../util/auth_utils';
+
+import Route from '../../enums/route';
 import Environment from '../../environment/environment';
-import AuthUtils from '../../util/auth_utils'
 
 export default class GithubAuthPage extends React.Component {
   constructor(props) {
@@ -41,7 +43,7 @@ function onNavigationStateChangeCallback(state) {
       'client_token', JSON.stringify(this.state.client_token)
     );
     this.props.navigator.resetTo({
-      id: 'main'
+      id: Route.main
     });
   }
 }

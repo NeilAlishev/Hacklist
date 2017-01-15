@@ -1,27 +1,32 @@
 import React from 'react';
 import {
   Text,
-  AsyncStorage
+  AsyncStorage,
+  ActivityIndicator,
+  StyleSheet
 } from 'react-native';
 
-import Environment from '../environment/environment';
-import Api from '../enums/api';
 import HackathonsList from './hackathons_list';
+import ChoosePage from './auth/choose';
+import Spinner from './helpers/spinner';
+
+import Api from '../enums/api';
+import Environment from '../environment/environment';
 
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hacks: undefined
-    }
+    this.state = {};
+
     AsyncStorage.getItem('client_token', (err, token) => {
-      //TODO add a loop
+      token = JSON.parse(token);
       fetch(Environment.BASE_URL + Api.hacks + token)
         .then(response => response.json())
-        .then(data => {
+        .then(resp => {
           this.setState({
-            hacks: data.response
-          })
+            hacks: resp.data,
+            error: resp.error
+          });
         })
         .catch((error) => console.error(error))
         .done();
@@ -29,13 +34,16 @@ export default class MainPage extends React.Component {
   }
 
   render() {
-    let hacks = this.state.hacks
-    if (!hacks) {
-      // TODO: PUT SPINNER HERE
-      return <Text>No data yet</Text>;
+    const hacks = this.state.hacks
+    const error = this.state.error
+
+    if (hacks) {
+      return <HackathonsList hacks={hacks}/>;
     }
-    return (
-      <HackathonsList hacks={hacks}/>
-    );
+    if (error) {
+      return <ChoosePage navigator={this.props.navigator} error={true}/>;
+    } else {
+      return <Spinner/>
+    }
   }
 }

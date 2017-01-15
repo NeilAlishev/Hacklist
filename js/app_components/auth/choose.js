@@ -3,8 +3,11 @@ import {
   View,
   TouchableHighlight,
   StyleSheet,
-  Image
+  Image,
+  Text
 } from 'react-native';
+
+import Route from '../../enums/route';
 
 export default class ChoosePage extends React.Component {
   constructor(props) {
@@ -12,8 +15,13 @@ export default class ChoosePage extends React.Component {
   }
 
   render() {
+    let authFailedText = null;
+    if (this.props.error) {
+      authFailedText = <Text>Auth failed :(</Text>;
+    }
     return (
       <View style={styles.container}>
+      {authFailedText}
       <TouchableHighlight onPress={githubAuth.bind(this)} style={styles.logo}>
         <Image
           style={styles.logo}
@@ -33,13 +41,13 @@ export default class ChoosePage extends React.Component {
 
 function githubAuth() {
   this.props.navigator.push({
-    id: 'githubAuth'
+    id: Route.githubAuth
   });
 };
 
 function vkAuth() {
   this.props.navigator.push({
-    id: 'vkAuth'
+    id: Route.vkAuth
   });
 }
 
