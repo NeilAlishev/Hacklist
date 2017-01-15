@@ -4,8 +4,10 @@ import {
   AsyncStorage
 } from 'react-native';
 
+import AuthUtils from '../../util/auth_utils';
+
+import Route from '../../enums/route';
 import Environment from '../../environment/environment';
-import AuthUtils from '../../util/auth_utils'
 
 export default class VkAuthPage extends React.Component {
   constructor(props) {
@@ -31,7 +33,7 @@ export default class VkAuthPage extends React.Component {
 }
 
 function buildUri(client_token) {
-  return Environment.vkOauth + 'state=' + client_token;
+  return Environment.vkOAuth + 'state=' + client_token;
 }
 
 function onNavigationStateChangeCallback(state) {
@@ -41,7 +43,7 @@ function onNavigationStateChangeCallback(state) {
       'client_token', JSON.stringify(this.state.client_token)
     );
     this.props.navigator.resetTo({
-      id: 'main'
+      id: Route.main
     });
   }
 }

@@ -6,23 +6,19 @@ import {
   Navigator
 } from 'react-native';
 
-import Route from '../enums/route';
-
 import ChoosePage from './auth/choose';
 import GithubAuthPage from './auth/github_auth';
 import VkAuthPage from './auth/vk_auth';
 import MainPage from './main';
-
 import Spinner from './helpers/spinner';
+
+import Route from '../enums/route';
 
 export default class InitialDispatcher extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      token: undefined
-    };
+    this.state = {};
 
-    //TODO check if token is actual
     AsyncStorage.getItem('client_token', (err, res) => {
       this.setState({
         token: res,
@@ -37,7 +33,7 @@ export default class InitialDispatcher extends React.Component {
       return <Spinner/>
     }
 
-    const initialRoute = token == null ? Route.choose : Route.main;
+    const initialRoute = token == null ? Route.chooseAuth : Route.main;
     return (
       <Navigator
         style={styles.container}
@@ -49,7 +45,7 @@ export default class InitialDispatcher extends React.Component {
 
 function navigatorRenderScene(route, navigator) {
   switch (route.id) {
-    case Route.choose:
+    case Route.chooseAuth:
       return <ChoosePage navigator={navigator}/>;
     case Route.githubAuth:
       return <GithubAuthPage navigator={navigator}/>;

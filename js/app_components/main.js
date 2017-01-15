@@ -6,27 +6,26 @@ import {
   StyleSheet
 } from 'react-native';
 
-import Environment from '../environment/environment';
-import Api from '../enums/api';
 import HackathonsList from './hackathons_list';
-
-import ErrorPage from './helpers/error_page';
+import ChoosePage from './auth/choose';
 import Spinner from './helpers/spinner';
+
+import Api from '../enums/api';
+import Environment from '../environment/environment';
 
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hacks: undefined
-    }
+    this.state = {};
 
     AsyncStorage.getItem('client_token', (err, token) => {
+      token = JSON.parse(token);
       fetch(Environment.BASE_URL + Api.hacks + token)
         .then(response => response.json())
-        .then(data => {
+        .then(resp => {
           this.setState({
-            hacks: data.response,
-            errorMessage: data.errorMessage
+            hacks: resp.data,
+            error: resp.error
           });
         })
         .catch((error) => console.error(error))
@@ -35,18 +34,16 @@ export default class MainPage extends React.Component {
   }
 
   render() {
-    let hacks = this.state.hacks
-    let errorMessage = this.state.errorMessage
+    const hacks = this.state.hacks
+    const error = this.state.error
 
-    if (!hacks) {
-      if(errorMessage) {
-        return <ErrorPage message={errorMessage}/>
-      } else {
-        return <Spinner/>
-      }
+    if (hacks) {
+      return <HackathonsList hacks={hacks}/>;
     }
-    return (
-      <HackathonsList hacks={hacks}/>
-    );
+    if (error) {
+      return <ChoosePage navigator={this.props.navigator} error={true}/>;
+    } else {
+      return <Spinner/>
+    }
   }
 }
