@@ -57,9 +57,8 @@ function navigatorRenderScene(route, navigator) {
 }
 
 function navigatorConfigureScene(route, routeStack) {
-  if(route.id === Route.githubAuth || route.id === Route.vkAuth) {
+  if (route.id === Route.githubAuth || route.id === Route.vkAuth) {
     return Navigator.SceneConfigs.FloatFromBottom;
   }
-
   return Navigator.SceneConfigs.PushFromRight;
 }
