@@ -1,13 +1,17 @@
 import React from 'react';
 import {
   WebView,
-  AsyncStorage
+  AsyncStorage,
+  View,
+  StyleSheet
 } from 'react-native';
 
 import AuthUtils from '../../util/auth_utils';
 
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
+
+import CloseTab from '../helpers/close_tab';
 
 export default class GithubAuthPage extends React.Component {
   constructor(props) {
@@ -19,15 +23,18 @@ export default class GithubAuthPage extends React.Component {
 
   render() {
     return (
-      // TODO: back button
-      <WebView
-        source={{uri: buildUri(this.state.client_token)}}
-        onNavigationStateChange={
-          onNavigationStateChangeCallback.bind(this)
-        }
-        startInLoadingState={true}
-        contentInset={{top: 40, left: 0, bottom: 0, right: 0}}
-      />
+      <View style={styles.container}>
+        <CloseTab navigator={this.props.navigator}/>
+
+        <WebView
+          source={{uri: buildUri(this.state.client_token)}}
+          onNavigationStateChange={
+            onNavigationStateChangeCallback.bind(this)
+          }
+          startInLoadingState={true}
+          style={{flex: 1}}
+        />
+      </View>
     );
   }
 }
@@ -47,3 +54,11 @@ function onNavigationStateChangeCallback(state) {
     });
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 30,
+    backgroundColor: '#DCDCDC'
+  }
+});

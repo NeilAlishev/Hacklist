@@ -37,7 +37,8 @@ export default class InitialDispatcher extends React.Component {
     return (
       <Navigator
         initialRoute={{id: initialRoute}}
-        renderScene={navigatorRenderScene}/>
+        renderScene={navigatorRenderScene}
+        configureScene={navigatorConfigureScene}/>
     );
   }
 }
@@ -53,4 +54,11 @@ function navigatorRenderScene(route, navigator) {
     case Route.main:
       return (<MainPage navigator={navigator}/>);
   }
+}
+
+function navigatorConfigureScene(route, routeStack) {
+  if (route.id === Route.githubAuth || route.id === Route.vkAuth) {
+    return Navigator.SceneConfigs.FloatFromBottom;
+  }
+  return Navigator.SceneConfigs.PushFromRight;
 }
