@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  StyleSheet,
-  Text,
-  AsyncStorage,
-  Navigator
+  Navigator,
+  AsyncStorage
 } from 'react-native';
 
 import ChoosePage from './auth/choose';

@@ -14,7 +14,9 @@ import {
   getTheme
 } from 'react-native-material-kit';
 
-export default class HackathonRow extends React.Component {
+import Route from '../../enums/route';
+
+export default class HackRow extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -45,7 +47,7 @@ export default class HackathonRow extends React.Component {
       >
         <View style={styles.container}>
           <View style={theme.cardStyle}>
-            <Image source={require('../resources/images/elon.jpg')}
+            <Image source={require('../../resources/images/elon.jpg')}
                    style={theme.cardImageStyle}/>
             <Text style={theme.cardTitleStyle}>Title: {hack.title}</Text>
             <View style={{padding : 15,}}>
@@ -68,8 +70,10 @@ export default class HackathonRow extends React.Component {
 }
 
 function onPressCallback() {
-  //TODO add navigation to hack-info page here
-  console.log(this.props.hack);
+  this.props.navigator.push({
+    id: Route.hackPage,
+    hack: this.props.hack
+  });
 }
 
 const styles = StyleSheet.create({
