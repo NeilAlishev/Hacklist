@@ -9,16 +9,10 @@ import {
 import Route from '../../enums/route';
 
 export default class Spinner extends React.Component {
-  constructor() {
-    super();
-
-    this.onPressCallback = this.onPressCallback.bind(this);
-  }
-
   render() {
     return (
       <View style={styles.topbar}>
-          <TouchableOpacity onPress={this.onPressCallback}>
+          <TouchableOpacity onPress={this.onPressCallback.bind(this)}>
               <Text style={styles.topbarText}>Закрыть</Text>
           </TouchableOpacity>
       </View>
