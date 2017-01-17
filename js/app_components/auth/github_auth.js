@@ -24,7 +24,7 @@ export default class GithubAuthPage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <CloseTab navigator={this.props.navigator}/>
+        <CloseTab text={'Закрыть'} navigator={this.props.navigator}/>
 
         <WebView
           source={{uri: buildUri(this.state.client_token)}}

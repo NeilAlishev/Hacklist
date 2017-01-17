@@ -3,9 +3,9 @@ import {
   ListView
 } from 'react-native';
 
-import HackathonRow from './hack_row';
+import HackRow from './hack_row';
 
-export default class HackathonList extends React.Component {
+export default class HackList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,7 +14,7 @@ export default class HackathonList extends React.Component {
     return (
       <ListView
         dataSource={dataSource.apply(this)}
-        renderRow={renderRow}
+        renderRow={renderRow.bind(this)}
         enableEmptySections={true}/>
     );
   }
@@ -28,5 +28,5 @@ function dataSource() {
 }
 
 function renderRow(hack) {
-  return <HackathonRow hack={hack}/>;
+  return <HackRow hack={hack} navigator={this.props.navigator}/>;
 }

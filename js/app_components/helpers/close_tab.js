@@ -8,22 +8,20 @@ import {
 
 import Route from '../../enums/route';
 
-export default class Spinner extends React.Component {
+export default class CloseTab extends React.Component {
   render() {
     return (
       <View style={styles.topbar}>
-          <TouchableOpacity onPress={this.onPressCallback.bind(this)}>
-              <Text style={styles.topbarText}>Закрыть</Text>
+          <TouchableOpacity onPress={onPressCallback.bind(this)}>
+              <Text style={styles.topbarText}>{this.props.text}</Text>
           </TouchableOpacity>
       </View>
     );
   }
+}
 
-  onPressCallback() {
-    this.props.navigator.resetTo({
-        id: Route.chooseAuth
-    });
-  }
+function onPressCallback() {
+  this.props.navigator.pop();
 }
 
 const styles = StyleSheet.create({
