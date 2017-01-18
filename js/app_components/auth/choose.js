@@ -1,9 +1,7 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
-  Image,
-  Text
+  StyleSheet
 } from 'react-native';
 
 import Logo from '../helpers/auth/logo';
