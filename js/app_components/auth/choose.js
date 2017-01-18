@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Route from '../../enums/route';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class ChoosePage extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class ChoosePage extends React.Component {
     return (
       <View style={styles.container}>
       {authFailedText}
+      <Icon name="rocket" size={30} color="#900" />
       <TouchableHighlight onPress={githubAuth.bind(this)} style={styles.logo}>
         <Image
           style={styles.logo}
