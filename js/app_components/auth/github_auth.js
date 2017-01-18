@@ -11,7 +11,7 @@ import AuthUtils from '../../util/auth_utils';
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
 
-import CloseTab from '../helpers/close_tab';
+import NavigationTab from '../helpers/navigation_tab';
 
 export default class GithubAuthPage extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class GithubAuthPage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <CloseTab text={'Закрыть'} navigator={this.props.navigator}/>
+        <NavigationTab text={'Закрыть'} navigator={this.props.navigator}/>
 
         <WebView
           source={{uri: buildUri(this.state.client_token)}}
@@ -56,9 +56,5 @@ function onNavigationStateChangeCallback(state) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 30,
-    backgroundColor: '#DCDCDC'
-  }
+  container: {flex: 1}
 });

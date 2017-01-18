@@ -8,12 +8,12 @@ import {
 
 import Route from '../../enums/route';
 
-export default class CloseTab extends React.Component {
+export default class NavigationTab extends React.Component {
   render() {
     return (
-      <View style={styles.topbar}>
+      <View style={styles.container}>
           <TouchableOpacity onPress={onPressCallback.bind(this)}>
-              <Text style={styles.topbarText}>{this.props.text}</Text>
+              <Text style={styles.navigationText}>{this.props.text}</Text>
           </TouchableOpacity>
       </View>
     );
@@ -25,13 +25,16 @@ function onPressCallback() {
 }
 
 const styles = StyleSheet.create({
-  topbar: {
-    height: 30,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    paddingLeft: 10
+  container: {
+    flexDirection: 'row',
+    paddingTop: 20,
+    justifyContent: 'space-between',
+    borderBottomColor: '#E1E1E1',
+    borderBottomWidth: 1,
+    backgroundColor: '#DCDCDC'
   },
-  topbarText: {
+  navigationText: {
+    padding: 10,
     color: 'white'
   }
 });
