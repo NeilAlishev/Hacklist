@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import CloseTab from '../helpers/close_tab';
+import NavigationTab from '../helpers/navigation_tab';
 
 export default class HackPage extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class HackPage extends React.Component {
 
     return (
       <View style={styles.container}>
-        <CloseTab text={'Назад'} navigator={this.props.navigator}/>
+        <NavigationTab text={'Назад'} navigator={this.props.navigator}/>
         <Text>Hack page!</Text>
         <Text>Title: {hack.title}</Text>
         <Text>Date: {date}</Text>
@@ -28,9 +28,5 @@ export default class HackPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 30,
-    backgroundColor: '#DCDCDC'
-  }
+  container: {flex: 1}
 });
