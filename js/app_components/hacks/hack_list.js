@@ -1,13 +1,24 @@
 import React from 'react';
 import {
-  ListView
+  ListView,
+  Platform,
+  BackAndroid
 } from 'react-native';
 
 import HackRow from './hack_row';
+import Route from '../../enums/route';
 
 export default class HackList extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    if (Platform.OS === 'android') {
+      BackAndroid.addEventListener(
+        'hardwareBackPress', backBtnCallback.bind(this)
+      );
+    }
   }
 
   render() {
@@ -18,6 +29,17 @@ export default class HackList extends React.Component {
         enableEmptySections={true}/>
     );
   }
+}
+
+function backBtnCallback() {
+  const nav = this.props.navigator;
+  const routes = nav.getCurrentRoutes();
+  const curRoute = routes[routes.length - 1];
+  if (curRoute.id === Route.hackPage) {
+    nav.pop();
+    return true;
+  }
+  return false;
 }
 
 function dataSource() {
