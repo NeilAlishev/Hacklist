@@ -12,6 +12,7 @@
     "react-native-drawer-layout": "^1.1.0",
     "react-native-gifted-listview": "0.0.15",
     "react-native-material-kit": "^0.3.4",
+    "react-native-vector-icons": "^4.0.0",
     "tcomb-form-native": "^0.5"
   },
   "jest": {
