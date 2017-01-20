@@ -3,19 +3,13 @@ import {
   View,
   Image,
   Linking,
-  StyleSheet
-} from 'react-native';
-import {
+  StyleSheet,
   Text
-} from 'react-native-elements';
+} from 'react-native';
 
 import NavigationTab from '../helpers/navigation_tab';
 
 export default class HackPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const hack = this.props.hack;
     const date = getDate(hack);
@@ -24,7 +18,7 @@ export default class HackPage extends React.Component {
       <View style={styles.container}>
         <NavigationTab text={'Назад'} navigator={this.props.navigator}/>
 
-        <Text h2 style={[styles.title, styles.padding]}>{hack.title}</Text>
+        <Text style={[styles.title, styles.padding]}>{hack.title}</Text>
         <Image source={{uri: hack.imageUrl}} resizeMode='contain'
                style={styles.image}/>
         <Text style={styles.padding}>{hack.description}</Text>
@@ -40,7 +34,10 @@ export default class HackPage extends React.Component {
           <Text style={styles.titleText}>
             Подробности здесь
           </Text>
-          <Text style={styles.link} onPress={onPressCallback.bind(this)}>
+          <Text
+            style={styles.link}
+            onPress={() => Linking.openURL(hack.url)}
+          >
             {hack.url}
           </Text>
         </Text>
@@ -55,18 +52,6 @@ function getDate(hack) {
   return date.toLocaleDateString();
 }
 
-function onPressCallback() {
-  //NOTE не работает
-  const url = this.props.hack.url;
-  Linking.canOpenURL(url).then(supported => {
-      if (supported) {
-        Linking.openURL(url);
-      } else {
-        console.log('Don\'t know how to open URI: ' + url);
-      }
-    });
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -76,7 +61,8 @@ const styles = StyleSheet.create({
     paddingLeft: 5
   },
   title: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontSize: 30
   },
   image: {
     borderRadius: 20,
