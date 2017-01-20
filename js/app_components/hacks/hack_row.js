@@ -44,6 +44,8 @@ export default class HackRow extends React.Component {
     return (
       <TouchableHighlight
         onPress={onPressCallback.bind(this)}
+        // TEMPORARY
+        underlayColor='green'
       >
         <View style={styles.container}>
           <View style={theme.cardStyle}>
@@ -80,7 +82,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    backgroundColor: '#F5FCFF',
     padding: 20
+  },
+  cardImageStyle: {
+    resizeMode: 'contain',
+    width: 10
   }
 });
