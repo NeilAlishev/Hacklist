@@ -15,6 +15,7 @@ import {
 } from 'react-native-material-kit';
 
 import Route from '../../enums/route';
+import Util from '../../util/util.js';
 
 export default class HackRow extends React.Component {
   constructor(props) {
@@ -22,46 +23,31 @@ export default class HackRow extends React.Component {
   }
 
   render() {
-    let hack = this.props.hack;
-    let date = new Date(hack.date).toString();
-
-    //NOTE Maybe we`ll use it
-    const menu = (
-      <MKIconToggle
-        checked={true}
-        onCheckedChange={this._onIconChecked}
-        onPress={this._onIconClicked}
-      >
-        <Text pointerEvents="none"
-              style={styles.toggleTextOff}>Off</Text>
-        <Text state_checked={true}
-              pointerEvents="none"
-              style={[styles.toggleText, styles.toggleTextOn]}>On</Text>
-      </MKIconToggle>
-    );
+    const hack = this.props.hack;
+    const date = Util.getDate(hack.date);
 
     const theme = getTheme();
     return (
       <TouchableHighlight
         onPress={onPressCallback.bind(this)}
-        // TEMPORARY
+        //NOTE TEMPORARY
         underlayColor='green'
       >
         <View style={styles.container}>
           <View style={theme.cardStyle}>
-            <Image source={require('../../resources/images/elon.jpg')}
-                   style={theme.cardImageStyle}/>
-            <Text style={theme.cardTitleStyle}>Title: {hack.title}</Text>
-            <View style={{padding : 15,}}>
-              <Text style={[theme.cardContentStyle, {padding:0}]}>
-                City: {hack.city}
-              </Text>
-            </View>
-            {/* <View style={theme.cardMenuStyle}>{menu}</View>*/}
-            <View style={theme.cardActionStyle}>
+            <Image source={{uri: hack.imageUrl}} resizeMode='contain'
+                 style={theme.cardImageStyle}/>
+            <Text style={[theme.cardContentStyle, styles.title]}>
+              {hack.title}
+            </Text>
+            <View style={[theme.cardActionStyle, {padding: 10}]}>
               <Text>
-                Address: {hack.address} {'\n'}
-                Date&Time: {date}
+                <Text style={styles.titleText}>Город: </Text>
+                <Text>{hack.city}</Text>
+              </Text>
+              <Text>
+                <Text style={styles.titleText}>Через </Text>
+                <Text>сколько-то дней</Text>
               </Text>
             </View>
           </View>
@@ -84,8 +70,12 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     padding: 20
   },
-  cardImageStyle: {
-    resizeMode: 'contain',
-    width: 10
+  title: {
+    padding:10,
+    fontSize: 15,
+    fontStyle: 'italic'
+  },
+  titleText: {
+    fontWeight: 'bold'
   }
 });

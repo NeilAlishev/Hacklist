@@ -7,12 +7,13 @@ import {
   Text
 } from 'react-native';
 
-import NavigationTab from '../helpers/navigation_tab';
+import NavigationTab from '../core/navigation_tab';
+import Util from '../../util/util.js';
 
 export default class HackPage extends React.Component {
   render() {
     const hack = this.props.hack;
-    const date = getDate(hack);
+    const date = Util.getDate(hack.date);
 
     return (
       <View style={styles.container}>
@@ -31,13 +32,8 @@ export default class HackPage extends React.Component {
           <Text>{date}</Text>
         </Text>
         <Text style={styles.padding}>
-          <Text style={styles.titleText}>
-            Подробности здесь
-          </Text>
-          <Text
-            style={styles.link}
-            onPress={() => Linking.openURL(hack.url)}
-          >
+          <Text style={styles.titleText}>Подробности здесь </Text>
+          <Text style={styles.link} onPress={onPressCallback.bind(this)}>
             {hack.url}
           </Text>
         </Text>
@@ -46,10 +42,9 @@ export default class HackPage extends React.Component {
   }
 }
 
-function getDate(hack) {
-  const date = new Date(hack.date);
-  //TODO format date
-  return date.toLocaleDateString();
+function onPressCallback() {
+  //NOTE иногда не открывает по первому нажатию
+  Linking.openURL(this.props.hack.url);
 }
 
 const styles = StyleSheet.create({

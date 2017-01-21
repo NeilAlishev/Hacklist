@@ -5,7 +5,7 @@ import {
 
 import HackDispatcher from './hacks/hack_dispatcher';
 import ChoosePage from './auth/choose';
-import Spinner from './helpers/spinner';
+import Spinner from './core/spinner';
 
 import Api from '../enums/api';
 import Environment from '../environment/environment';

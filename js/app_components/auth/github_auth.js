@@ -11,7 +11,7 @@ import AuthUtils from '../../util/auth_utils';
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
 
-import NavigationTab from '../helpers/navigation_tab';
+import NavigationTab from '../core/navigation_tab';
 
 export default class GithubAuthPage extends React.Component {
   constructor(props) {
