@@ -57,7 +57,7 @@ function renderRow(hack) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
     paddingTop: 20
   }
 });

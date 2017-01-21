@@ -30,8 +30,7 @@ export default class HackRow extends React.Component {
     return (
       <TouchableHighlight
         onPress={onPressCallback.bind(this)}
-        //NOTE TEMPORARY
-        underlayColor='green'
+        underlayColor='white'
       >
         <View style={styles.container}>
           <View style={theme.cardStyle}>
@@ -46,7 +45,7 @@ export default class HackRow extends React.Component {
                 <Text>{hack.city}</Text>
               </Text>
               <Text>
-                <Text style={styles.titleText}>Через </Text>
+                <Text style={styles.titleText}>Через: </Text>
                 <Text>сколько-то дней</Text>
               </Text>
             </View>
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
   },
   title: {
     padding:10,
-    fontSize: 15,
+    fontSize: 25,
     fontStyle: 'italic'
   },
   titleText: {

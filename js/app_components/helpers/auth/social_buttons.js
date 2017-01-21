@@ -21,7 +21,7 @@ export default class SocialButtons extends React.Component {
             <View style={styles.inline}>
               <Text style={[styles.vkButtonText, styles.buttonBigText]}>  Войти </Text>
               <Text style={styles.vkButtonText}>через </Text>
-              <Icon name="vk" size={23} color="#3B5699" />
+              <Icon name='vk' size={23} color='#3B5699' />
             </View>
           </TouchableHighlight>
         </View>
@@ -35,7 +35,7 @@ export default class SocialButtons extends React.Component {
             <View style={styles.inline}>
               <Text style={[styles.githubButtonText, styles.buttonBigText]}>  Войти </Text>
               <Text style={styles.githubButtonText}>через </Text>
-              <Icon name="github" size={23} color='black' />
+              <Icon name='github' size={23} color='black' />
             </View>
           </TouchableHighlight>
         </View>

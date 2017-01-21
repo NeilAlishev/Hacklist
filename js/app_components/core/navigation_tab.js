@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 20,
     justifyContent: 'space-between',
-    borderBottomColor: '#E1E1E1',
+    borderBottomColor: 'white',
     borderBottomWidth: 1,
-    backgroundColor: '#DCDCDC'
+    backgroundColor: '#F0F0F0'
   },
   navigationText: {
     padding: 10,
