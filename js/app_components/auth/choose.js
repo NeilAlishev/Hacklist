@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   View,
+  Text,
   Platform,
   StyleSheet,
   BackAndroid

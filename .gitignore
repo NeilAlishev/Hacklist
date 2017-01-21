@@ -28,6 +28,7 @@ ios/F8v2.xcworkspace
 .gradle
 build
 keystores
+*.keystore
 BUCK
 local.properties
 *.iml
