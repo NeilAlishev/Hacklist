@@ -6,15 +6,13 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
-
 import {
-  MKButton,
-  MKColor,
-  MKIconToggle,
-  getTheme
-} from 'react-native-material-kit';
+  Card,
+  Button
+} from 'react-native-elements';
 
 import Route from '../../enums/route';
+import Util from '../../util/util.js';
 
 export default class HackRow extends React.Component {
   constructor(props) {
@@ -22,49 +20,29 @@ export default class HackRow extends React.Component {
   }
 
   render() {
-    let hack = this.props.hack;
-    let date = new Date(hack.date).toString();
+    const hack = this.props.hack;
+    const date = Util.getDate(hack.date);
 
-    //NOTE Maybe we`ll use it
-    const menu = (
-      <MKIconToggle
-        checked={true}
-        onCheckedChange={this._onIconChecked}
-        onPress={this._onIconClicked}
-      >
-        <Text pointerEvents="none"
-              style={styles.toggleTextOff}>Off</Text>
-        <Text state_checked={true}
-              pointerEvents="none"
-              style={[styles.toggleText, styles.toggleTextOn]}>On</Text>
-      </MKIconToggle>
-    );
-
-    const theme = getTheme();
     return (
-      <TouchableHighlight
-        onPress={onPressCallback.bind(this)}
-      >
+      <Card title={hack.title} image={{uri: hack.imageUrl}}>
         <View style={styles.container}>
-          <View style={theme.cardStyle}>
-            <Image source={require('../../resources/images/elon.jpg')}
-                   style={theme.cardImageStyle}/>
-            <Text style={theme.cardTitleStyle}>Title: {hack.title}</Text>
-            <View style={{padding : 15,}}>
-              <Text style={[theme.cardContentStyle, {padding:0}]}>
-                City: {hack.city}
-              </Text>
-            </View>
-            {/* <View style={theme.cardMenuStyle}>{menu}</View>*/}
-            <View style={theme.cardActionStyle}>
-              <Text>
-                Address: {hack.address} {'\n'}
-                Date&Time: {date}
-              </Text>
-            </View>
-          </View>
+          <Text>
+            <Text style={styles.titleText}>Город: </Text>
+            <Text>{hack.city}</Text>
+          </Text>
+          <Text>
+            <Text style={styles.titleText}>Через: </Text>
+            <Text>сколько-то дней</Text>
+          </Text>
         </View>
-      </TouchableHighlight>
+        <Button iconRight
+          icon={{name: 'forward'}}
+          title='Подробности там'
+          backgroundColor='#5abfed'
+          underlayColor='#03A9F4'
+          buttonStyle={styles.button}
+          onPress={onPressCallback.bind(this)}/>
+      </Card>
     );
   }
 }
@@ -78,9 +56,15 @@ function onPressCallback() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'stretch',
-    backgroundColor: '#F5FCFF',
-    padding: 20
+    marginBottom: 10
+  },
+  titleText: {
+    fontWeight: 'bold'
+  },
+  button: {
+    borderRadius: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0
   }
 });

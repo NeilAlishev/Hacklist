@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  StyleSheet,
+  Text,
   View,
-  TouchableOpacity,
-  Text
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 
 import Route from '../../enums/route';
@@ -26,15 +26,12 @@ function onPressCallback() {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    paddingTop: 20,
-    justifyContent: 'space-between',
-    borderBottomColor: '#E1E1E1',
-    borderBottomWidth: 1,
-    backgroundColor: '#DCDCDC'
+    padding: 7,
+    justifyContent: 'center',
+    backgroundColor: '#F0F0F0'
   },
   navigationText: {
-    padding: 10,
-    color: 'white'
+    padding: 7,
+    color: '#545454'
   }
 });

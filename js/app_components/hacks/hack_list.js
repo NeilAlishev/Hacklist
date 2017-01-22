@@ -2,7 +2,8 @@ import React from 'react';
 import {
   ListView,
   Platform,
-  BackAndroid
+  BackAndroid,
+  StyleSheet
 } from 'react-native';
 
 import HackRow from './hack_row';
@@ -26,7 +27,8 @@ export default class HackList extends React.Component {
       <ListView
         dataSource={dataSource.apply(this)}
         renderRow={renderRow.bind(this)}
-        enableEmptySections={true}/>
+        enableEmptySections={true}
+        style={styles.container}/>
     );
   }
 }
@@ -52,3 +54,9 @@ function dataSource() {
 function renderRow(hack) {
   return <HackRow hack={hack} navigator={this.props.navigator}/>;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white'
+  }
+});

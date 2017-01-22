@@ -11,7 +11,7 @@ import AuthUtils from '../../util/auth_utils';
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
 
-import NavigationTab from '../helpers/navigation_tab';
+import NavigationTab from '../core/navigation_tab';
 
 export default class VkAuthPage extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class VkAuthPage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavigationTab text={'Закрыть'} navigator={this.props.navigator}/>
+        <NavigationTab text={'Передумал'} navigator={this.props.navigator}/>
 
         <WebView
           source={{uri: buildUri(this.state.client_token)}}

@@ -8,7 +8,7 @@ import ChoosePage from './auth/choose';
 import GithubAuthPage from './auth/github_auth';
 import VkAuthPage from './auth/vk_auth';
 import MainPage from './main';
-import Spinner from './helpers/spinner';
+import Spinner from './core/spinner';
 
 import Route from '../enums/route';
 
