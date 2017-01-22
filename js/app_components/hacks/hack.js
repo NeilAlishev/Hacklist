@@ -6,11 +6,10 @@ import {
   StyleSheet,
   Text
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import NavigationTab from '../core/navigation_tab';
 import Util from '../../util/util.js';
-
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class HackPage extends React.Component {
   render() {
@@ -20,39 +19,35 @@ export default class HackPage extends React.Component {
     return (
       <View style={styles.container}>
         <NavigationTab
-          text={<Icon name='arrow-left' size={20} color='black' />}
+          text={<Icon name='arrow-left' size={20} color='black'/>}
           navigator={this.props.navigator}
         />
 
         <Image source={{uri: hack.imageUrl}} resizeMode='contain'
                style={styles.image}/>
+        <Text style={styles.title}>{hack.title}</Text>
 
-        <View style={styles.titleBlock}>
-          <Text style={styles.title}>{hack.title}</Text>
-        </View>
-
-        <View style={styles.contentBlock}>
-          <Text>{hack.description}</Text>
-
+        <Text style={styles.padding}>{hack.description}</Text>
+        <Text style={styles.padding}>
           <Text style={styles.titleText}>Где? </Text>
           <Text>г.{hack.city}, {hack.address}</Text>
-
+        </Text>
+        <Text style={styles.padding}>
           <Text style={styles.titleText}>Когда? </Text>
           <Text>{date}</Text>
-
-          <Text style={styles.titleText}>Подробности здесь </Text>
+        </Text>
+        <Text style={styles.padding}>
+          <Text style={styles.titleText}>Подробности </Text>
           <Text style={styles.link} onPress={onPressCallback.bind(this)}>
-            {hack.url}
+            по ссылке
           </Text>
-        </View>
+        </Text>
       </View>
     );
   }
 }
 
 function onPressCallback() {
-  //NOTE иногда не открывает по первому нажатию
-  //NOTE по-моему просто долго открывается
   Linking.openURL(this.props.hack.url);
 }
 
@@ -61,27 +56,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
+  padding: {
+    paddingLeft: 5
+  },
   title: {
     alignSelf: 'center',
-    fontSize: 30,
-    padding: 10,
-    color: 'white',
-    fontWeight: 'bold'
-  },
-  titleBlock: {
-    borderWidth: 2,
-    borderColor: 'white',
-    margin: 10,
-    marginBottom: 0,
-    backgroundColor: 'pink',
-  },
-  contentBlock: {
-    padding: 15,
-    borderWidth: 2,
-    borderColor: 'white',
-    backgroundColor: '#F7F7F7',
-    margin: 10,
-    marginTop: 0
+    fontSize: 20,
+    fontStyle: 'italic'
   },
   image: {
     alignSelf: 'stretch',
