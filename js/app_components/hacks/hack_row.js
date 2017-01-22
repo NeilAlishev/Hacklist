@@ -15,10 +15,6 @@ import Route from '../../enums/route';
 import Util from '../../util/util.js';
 
 export default class HackRow extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const hack = this.props.hack;
     const date = Util.getDate(hack.date);

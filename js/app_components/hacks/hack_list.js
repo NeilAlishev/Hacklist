@@ -10,10 +10,6 @@ import HackRow from './hack_row';
 import Route from '../../enums/route';
 
 export default class HackList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     if (Platform.OS === 'android') {
       BackAndroid.addEventListener(
@@ -28,7 +24,7 @@ export default class HackList extends React.Component {
         dataSource={dataSource.apply(this)}
         renderRow={renderRow.bind(this)}
         enableEmptySections={true}
-        style={styles.container}/>
+        style={[styles.container, iosPadding()]}/>
     );
   }
 }
@@ -53,6 +49,12 @@ function dataSource() {
 
 function renderRow(hack) {
   return <HackRow hack={hack} navigator={this.props.navigator}/>;
+}
+
+function iosPadding() {
+  if (Platform.OS === 'ios') {
+    return {paddingTop: 20}
+  }
 }
 
 const styles = StyleSheet.create({

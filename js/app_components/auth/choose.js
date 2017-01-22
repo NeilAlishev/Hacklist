@@ -12,7 +12,6 @@ import Logo from '../helpers/auth/logo';
 import SocialButtons from '../helpers/auth/social_buttons';
 
 export default class ChoosePage extends React.Component {
-
   componentWillMount() {
     if (Platform.OS === 'android') {
       BackAndroid.addEventListener(

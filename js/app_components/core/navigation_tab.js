@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 
 import Route from '../../enums/route';
@@ -13,7 +14,9 @@ export default class NavigationTab extends React.Component {
     return (
       <View style={styles.container}>
           <TouchableOpacity onPress={onPressCallback.bind(this)}>
-              <Text style={styles.navigationText}>{this.props.text}</Text>
+              <Text style={[styles.navigationText, iosPadding()]}>
+                {this.props.text}
+              </Text>
           </TouchableOpacity>
       </View>
     );
@@ -22,6 +25,12 @@ export default class NavigationTab extends React.Component {
 
 function onPressCallback() {
   this.props.navigator.pop();
+}
+
+function iosPadding() {
+  if (Platform.OS === 'ios') {
+    return {paddingTop: 20}
+  }
 }
 
 const styles = StyleSheet.create({

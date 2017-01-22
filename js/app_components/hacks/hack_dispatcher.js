@@ -10,10 +10,6 @@ import HackPage from './hack';
 import Route from '../../enums/route';
 
 export default class HackDispatcher extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Navigator
