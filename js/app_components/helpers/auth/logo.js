@@ -17,7 +17,7 @@ export default class Logo extends React.Component {
 
 const styles = StyleSheet.create({
   logo: {
-    flex: 1,
+    flexGrow: 1,
     width: 200,
     height: 200,
     resizeMode: 'contain'

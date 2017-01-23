@@ -1,7 +1,9 @@
 # OSX
+#
 .DS_Store
 
 # Xcode
+#
 build/
 *.pbxuser
 !default.pbxuser
@@ -19,23 +21,33 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-ios/Pods
-ios/F8v2.xcworkspace
-.xcodeproj/ !*.xcodeproj/project.pbxproj
 
-# Android/IJ
+# Android/IntelliJ
+#
+build/
 .idea
 .gradle
-build
-keystores
-*.keystore
-BUCK
 local.properties
 *.iml
 
 # node.js
-node_modules
+#
+node_modules/
 npm-debug.log
 
-# hacklist
-environment.js
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs
+*.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
