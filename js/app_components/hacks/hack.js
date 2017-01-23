@@ -26,6 +26,7 @@ export default class HackPage extends React.Component {
         <Image source={{uri: hack.imageUrl}} resizeMode='contain'
                style={styles.image}/>
         <Text style={styles.title}>{hack.title}</Text>
+        <Text style={styles.org}>{hack.organizer}</Text>
 
         <Text style={styles.padding}>{hack.description}</Text>
         <Text style={styles.padding}>
@@ -62,6 +63,11 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: 'center',
     fontSize: 20,
+    fontStyle: 'italic'
+  },
+  org: {
+    alignSelf: 'center',
+    fontSize: 15,
     fontStyle: 'italic'
   },
   image: {
