@@ -23,12 +23,12 @@ export default class HackRow extends React.Component {
       <Card title={hack.title} image={{uri: hack.imageUrl}}>
         <View style={styles.container}>
           <Text>
-            <Text style={styles.titleText}>Город: </Text>
-            <Text>{hack.city}</Text>
+            <Text style={styles.titleText}>Организатор: </Text>
+            <Text>{hack.organizer}</Text>
           </Text>
           <Text>
-            <Text style={styles.titleText}>Через: </Text>
-            <Text>сколько-то дней</Text>
+            <Text style={styles.titleText}>Город: </Text>
+            <Text>{hack.city}</Text>
           </Text>
         </View>
         <Button iconRight
