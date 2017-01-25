@@ -1,33 +1,28 @@
 import React from 'react';
 import {
-  StyleSheet,
+  Text,
   View,
-  Text
+  StyleSheet,
 } from 'react-native';
 
 export default class ErrorBlock extends React.Component {
   render() {
-    if(this.props.error) {
-      return(
-        <View style={styles.errorBlock}>
-          <Text style={styles.errorMessage}>
-            Что-то помешало нам авторизовать вас.
-            Дайте нам еще один шанс, пожалуйста!
-          </Text>
-        </View>
-      );
-    } else {
-      return null;
-    }
+    return(
+      <View style={styles.errorBlock}>
+        <Text style={styles.errorMessage}>
+          Что-то помешало нам авторизовать вас.
+          Дайте нам еще один шанс, пожалуйста!
+        </Text>
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   errorBlock: {
     alignItems: 'center',
-    padding: 10,
-    margin: 30,
-    marginBottom: 0
+    marginLeft: 20,
+    marginRight: 20
   },
   errorMessage: {
     color: '#ff6666'

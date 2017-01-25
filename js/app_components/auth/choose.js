@@ -27,12 +27,8 @@ export default class ChoosePage extends React.Component {
         <View style={styles.logoBlock}>
           <Logo/>
         </View>
-
-        <ErrorBlock error={this.props.error}/>
-
-        <View style={styles.socialBlock}>
-          <SocialButtons navigator={this.props.navigator}/>
-        </View>
+        {this.props.error ? <ErrorBlock/> : null}
+        <SocialButtons navigator={this.props.navigator}/>
       </View>
     );
   }
