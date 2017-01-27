@@ -9,6 +9,7 @@ import {
 
 import Route from '../../enums/route';
 import Logo from '../helpers/auth/logo';
+import ErrorBlock from '../helpers/auth/error_block';
 import SocialButtons from '../helpers/auth/social_buttons';
 
 export default class ChoosePage extends React.Component {
@@ -21,24 +22,13 @@ export default class ChoosePage extends React.Component {
   }
 
   render() {
-    let authFailedText = null;
-    if (this.props.error) {
-      authFailedText = <Text>Auth failed :(</Text>;
-    }
-
     return (
       <View style={styles.container}>
         <View style={styles.logoBlock}>
           <Logo/>
         </View>
-
-        <View style={styles.errorBlock}>
-          {authFailedText}
-        </View>
-
-        <View style={styles.socialBlock}>
-          <SocialButtons navigator={this.props.navigator}/>
-        </View>
+        {this.props.error ? <ErrorBlock/> : null}
+        <SocialButtons navigator={this.props.navigator}/>
       </View>
     );
   }
