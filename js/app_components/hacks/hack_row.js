@@ -17,7 +17,6 @@ import Util from '../../util/util.js';
 export default class HackRow extends React.Component {
   render() {
     const hack = this.props.hack;
-    const date = Util.getDate(hack.date);
 
     return (
       <Card title={hack.title} image={{uri: hack.imageUrl}}>
@@ -33,7 +32,7 @@ export default class HackRow extends React.Component {
         </View>
         <Button iconRight
           icon={{name: 'forward'}}
-          title='Подробности там'
+          title='Подробности'
           backgroundColor='#5abfed'
           underlayColor='#03A9F4'
           buttonStyle={styles.button}
