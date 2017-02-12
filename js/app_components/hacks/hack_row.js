@@ -11,12 +11,15 @@ import {
   Button
 } from 'react-native-elements';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import Route from '../../enums/route';
 import Util from '../../util/util.js';
 
 export default class HackRow extends React.Component {
   render() {
     const hack = this.props.hack;
+    const daysFromNow = Util.getDaysFromNow(hack.date);
 
     return (
       <Card title={hack.title} image={{uri: hack.imageUrl}}>
@@ -28,6 +31,11 @@ export default class HackRow extends React.Component {
           <Text>
             <Text style={styles.titleText}>Город: </Text>
             <Text>{hack.city}</Text>
+          </Text>
+          <Text style={styles.daysFromNow}>
+            <Icon name='clock-o' size={15} color='gray'/>
+            {' '}
+            {daysFromNow}
           </Text>
         </View>
         <Button iconRight
@@ -61,5 +69,9 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     marginRight: 0,
     marginBottom: 0
+  },
+  daysFromNow: {
+    marginTop: 5,
+    color: 'gray'
   }
 });
