@@ -1,10 +1,11 @@
 import React from 'react';
 import {
+  Text,
   View,
   Image,
   Linking,
-  StyleSheet,
-  Text
+  Platform,
+  StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -14,7 +15,8 @@ import Util from '../../util/util.js';
 export default class HackPage extends React.Component {
   render() {
     const hack = this.props.hack;
-    const dateTime = Util.getDateTime(hack.date);
+    let dateTime = Platform.OS === 'ios' ? Util.getDateTime(hack.date)
+          : Util.getDateTimeAndroid(hack.date);
 
     return (
       <View style={styles.container}>

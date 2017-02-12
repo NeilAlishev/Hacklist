@@ -15,12 +15,30 @@ export default Util = {
     return formattedDate + ", в " + formattedTime;
   },
 
+  // work-around
+  getDateTimeAndroid: function(date) {
+    const months = [
+      "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+      "августа", "сентября", "октября", "ноября", "декабря"
+    ];
+
+    date = new Date(date);
+    const formattedDate = date.getDate() + " " + months[date.getMonth()];
+    const formattedTime = date.getHours() + ":" + date.getMinutes();
+
+    return formattedDate + ", в " + formattedTime;
+  },
+
   getDaysFromNow: function(date) {
     let eventDate = new Date(date);
     let now = new Date();
 
-    let utc1 = Date.UTC(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
-    let utc2 = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    let utc1 = Date.UTC(
+      eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate()
+    );
+    let utc2 = Date.UTC(
+      now.getFullYear(), now.getMonth(), now.getDate()
+    );
 
     let diff = Math.floor((utc1 - utc2) / MS_PER_DAY);
 
