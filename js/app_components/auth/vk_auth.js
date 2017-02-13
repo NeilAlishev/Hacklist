@@ -6,6 +6,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import AuthUtils from '../../util/auth_utils';
 
 import Route from '../../enums/route';
@@ -24,7 +26,10 @@ export default class VkAuthPage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavigationTab text={'Передумал'} navigator={this.props.navigator}/>
+        <NavigationTab
+          text={<Icon name='close' size={20} color='black'/>}
+          navigator={this.props.navigator}
+        />
 
         <WebView
           source={{uri: buildUri(this.state.client_token)}}

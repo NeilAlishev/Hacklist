@@ -1,10 +1,11 @@
 import React from 'react';
 import {
+  Text,
   View,
   Image,
   Linking,
-  StyleSheet,
-  Text
+  Platform,
+  StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -14,7 +15,8 @@ import Util from '../../util/util.js';
 export default class HackPage extends React.Component {
   render() {
     const hack = this.props.hack;
-    const date = Util.getDate(hack.date);
+    let dateTime = Platform.OS === 'ios' ? Util.getDateTime(hack.date)
+          : Util.getDateTimeAndroid(hack.date);
 
     return (
       <View style={styles.container}>
@@ -28,21 +30,25 @@ export default class HackPage extends React.Component {
         <Text style={styles.title}>{hack.title}</Text>
         <Text style={styles.org}>{hack.organizer}</Text>
 
-        <Text style={styles.padding}>{hack.description}</Text>
-        <Text style={styles.padding}>
-          <Text style={styles.titleText}>Где? </Text>
-          <Text>г.{hack.city}, {hack.address}</Text>
-        </Text>
-        <Text style={styles.padding}>
-          <Text style={styles.titleText}>Когда? </Text>
-          <Text>{date}</Text>
-        </Text>
-        <Text style={styles.padding}>
-          <Text style={styles.titleText}>Подробности </Text>
-          <Text style={styles.link} onPress={onPressCallback.bind(this)}>
-            по ссылке
-          </Text>
-        </Text>
+        <View style={styles.body}>
+          <Text>{hack.description}</Text>
+          <View style={styles.info}>
+            <Text>
+              <Text style={styles.titleText}>Где? </Text>
+              <Text>г.{hack.city}, {hack.address}</Text>
+            </Text>
+            <Text>
+              <Text style={styles.titleText}>Когда? </Text>
+              <Text>{dateTime}</Text>
+            </Text>
+            <Text>
+              <Text style={styles.titleText}>Подробности </Text>
+              <Text style={styles.link} onPress={onPressCallback.bind(this)}>
+                по ссылке
+              </Text>
+            </Text>
+          </View>
+        </View>
       </View>
     );
   }
@@ -57,8 +63,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
-  padding: {
-    paddingLeft: 5
+  body: {
+    padding: 5
   },
   title: {
     alignSelf: 'center',
@@ -80,5 +86,8 @@ const styles = StyleSheet.create({
   link: {
     color: 'blue',
     textDecorationLine: 'underline'
+  },
+  info: {
+    paddingTop: 5
   }
 });

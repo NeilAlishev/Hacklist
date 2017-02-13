@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   },
   logoBlock: {
     alignItems: 'center',
-    marginTop: 40,
-    backgroundColor: '#F0F8FF'
+    marginTop: 40
   }
 });
