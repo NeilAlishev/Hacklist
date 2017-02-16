@@ -10,13 +10,13 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import NavigationTab from '../core/navigation_tab';
-import Util from '../../util/util.js';
+import DateUtil from '../../util/date_util.js';
 
 export default class HackPage extends React.Component {
   render() {
     const hack = this.props.hack;
-    let dateTime = Platform.OS === 'ios' ? Util.getDateTime(hack.date)
-          : Util.getDateTimeAndroid(hack.date);
+    let dateTime = Platform.OS === 'ios' ? DateUtil.getDateTime(hack.date)
+          : DateUtil.getDateTimeAndroid(hack.date);
 
     return (
       <View style={styles.container}>

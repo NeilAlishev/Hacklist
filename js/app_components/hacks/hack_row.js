@@ -14,12 +14,12 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Route from '../../enums/route';
-import Util from '../../util/util.js';
+import DateUtil from '../../util/date_util.js';
 
 export default class HackRow extends React.Component {
   render() {
     const hack = this.props.hack;
-    const daysFromNow = Util.getDaysFromNow(hack.date);
+    const daysFromNow = DateUtil.getDaysFromNow(hack.date);
 
     return (
       <Card title={hack.title} image={{uri: hack.imageUrl}}>

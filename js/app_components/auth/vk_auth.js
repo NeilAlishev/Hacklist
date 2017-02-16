@@ -8,7 +8,7 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import AuthUtils from '../../util/auth_utils';
+import AuthUtil from '../../util/auth_util';
 
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
@@ -19,7 +19,7 @@ export default class VkAuthPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      client_token: AuthUtils.generateUID()
+      client_token: AuthUtil.generateUID()
     }
   }
 
