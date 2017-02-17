@@ -23,7 +23,7 @@ export default class HackRow extends React.Component {
 
     return (
       <Card title={hack.title} image={{uri: hack.imageUrl}}>
-        <View style={styles.container}>
+        <View style={[styles.container, topHacksHighlighting.apply(this)]}>
           <Text>
             <Text style={styles.titleText}>Организатор: </Text>
             <Text>{hack.organizer}</Text>
@@ -47,6 +47,12 @@ export default class HackRow extends React.Component {
           onPress={onPressCallback.bind(this)}/>
       </Card>
     );
+  }
+}
+
+function topHacksHighlighting() {
+  if (this.props.hack.category === 'TOP') {
+    return {backgroundColor: 'red'};
   }
 }
 

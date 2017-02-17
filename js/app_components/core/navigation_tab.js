@@ -29,7 +29,7 @@ function onPressCallback() {
 
 function iosPadding() {
   if (Platform.OS === 'ios') {
-    return {paddingTop: 20}
+    return {paddingTop: 20};
   }
 }
 
