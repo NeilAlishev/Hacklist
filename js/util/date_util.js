@@ -1,6 +1,6 @@
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-export default Util = {
+export default DateUtil = {
   getDateTime: function(date) {
     let rawDateTime = new Date(date);
     let formattedDate = rawDateTime.toLocaleString('ru', {

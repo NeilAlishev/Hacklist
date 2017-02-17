@@ -1,5 +1,8 @@
 import React from 'react';
 import {
+  Alert,
+  NetInfo,
+  Platform,
   Navigator,
   AsyncStorage
 } from 'react-native';
@@ -19,16 +22,31 @@ export default class InitialDispatcher extends React.Component {
 
     AsyncStorage.getItem('client_token', (err, res) => {
       this.setState({
-        token: res,
+        token: res
       });
     });
+    checkInternetConn.apply(this);
   }
 
   render() {
+    const conn = this.state.conn;
     const token = this.state.token;
 
-    if(token === undefined) {
+    if(token === undefined || conn === undefined) {
       return <Spinner/>
+    }
+
+    if (!conn) {
+      Alert.alert(
+        'Привет!',
+        'Нужно подключение к интернету',
+        [{
+          text: 'Поехали!',
+          onPress: checkInternetConn.bind(this)
+        }],
+        { cancelable: false }
+      );
+      return null;
     }
 
     const initialRoute = token == null ? Route.chooseAuth : Route.main;
@@ -39,6 +57,14 @@ export default class InitialDispatcher extends React.Component {
         configureScene={navigatorConfigureScene}/>
     );
   }
+}
+
+function checkInternetConn() {
+  NetInfo.isConnected.fetch().then(isConnected => {
+    this.setState({
+      conn: isConnected
+    });
+  });
 }
 
 function navigatorRenderScene(route, navigator) {
