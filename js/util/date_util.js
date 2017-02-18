@@ -33,6 +33,10 @@ export default DateUtil = {
     let eventDate = new Date(date);
     let now = new Date();
 
+    if(eventDate - now < 0) {
+      return "Уже идет";
+    }
+
     let utc1 = Date.UTC(
       eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate()
     );
