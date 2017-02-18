@@ -7,7 +7,7 @@ import {
   Platform,
   StyleSheet
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import NavigationTab from '../core/navigation_tab';
 import DateUtil from '../../util/date_util.js';
