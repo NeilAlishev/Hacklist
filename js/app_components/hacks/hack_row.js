@@ -55,7 +55,7 @@ function compoundTitle(hack) {
   if (hack.category === 'TOP') {
     return(
       <Text>
-        <SimpleLineIcon name='fire' size={20} color='red'/>
+        <SimpleLineIcon name='fire' size={17} color='red'/>
         {' '}
         {hack.title}
       </Text>
