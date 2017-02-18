@@ -60,11 +60,17 @@ export default class InitialDispatcher extends React.Component {
 }
 
 function checkInternetConn() {
-  NetInfo.isConnected.fetch().then(isConnected => {
-    this.setState({
-      conn: isConnected
+  if(Platform.OS === 'android') {
+    NetInfo.isConnected.fetch().then(isConnected => {
+      this.setState({
+        conn: isConnected
+      });
     });
-  });
+  } else {
+    NetInfo.addEventListener('change',
+      (isConnected)=> {this.setState({conn: isConnected})}
+    )
+  }
 }
 
 function navigatorRenderScene(route, navigator) {
