@@ -12,6 +12,7 @@ import {
 } from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
 import Route from '../../enums/route';
 import DateUtil from '../../util/date_util.js';
@@ -22,8 +23,8 @@ export default class HackRow extends React.Component {
     const daysFromNow = DateUtil.getDaysFromNow(hack.date);
 
     return (
-      <Card title={hack.title} image={{uri: hack.imageUrl}}>
-        <View style={[styles.container, topHacksHighlighting.apply(this)]}>
+      <Card title={compoundTitle(hack)} image={{uri: hack.imageUrl}}>
+        <View style={styles.container}>
           <Text>
             <Text style={styles.titleText}>Организатор: </Text>
             <Text>{hack.organizer}</Text>
@@ -50,9 +51,17 @@ export default class HackRow extends React.Component {
   }
 }
 
-function topHacksHighlighting() {
-  if (this.props.hack.category === 'TOP') {
-    return {backgroundColor: 'red'};
+function compoundTitle(hack) {
+  if (hack.category === 'TOP') {
+    return(
+      <Text>
+        {hack.title}
+        {' '}
+        <SimpleLineIcon name='fire' size={13} color='red'/>
+      </Text>
+    );
+  } else {
+    return hack.title;
   }
 }
 
