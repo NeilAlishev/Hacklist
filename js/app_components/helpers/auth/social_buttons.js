@@ -14,20 +14,6 @@ export default class SocialButtons extends React.Component {
       <View>
         <View style={{marginLeft: 20, marginTop: 20, marginRight: 20}}>
           <TouchableHighlight
-            style={[styles.transparentButton, styles.button, styles.vkButton]}
-            onPress={vkAuth.bind(this)}
-            underlayColor='#edf0f8'
-          >
-            <View style={styles.inline}>
-              <Text style={[styles.vkButtonText, styles.buttonBigText]}>  Войти </Text>
-              <Text style={styles.vkButtonText}>через </Text>
-              <Icon name='vk' size={23} color='#3B5699' />
-            </View>
-          </TouchableHighlight>
-        </View>
-
-        <View style={{marginLeft: 20, marginRight: 20, marginBottom: 20}}>
-          <TouchableHighlight
             style={[styles.transparentButton, styles.button, styles.githubButton]}
             onPress={githubAuth.bind(this)}
             underlayColor='#f2f2f2'
@@ -36,6 +22,20 @@ export default class SocialButtons extends React.Component {
               <Text style={[styles.githubButtonText, styles.buttonBigText]}>  Войти </Text>
               <Text style={styles.githubButtonText}>через </Text>
               <Icon name='github' size={23} color='black' />
+            </View>
+          </TouchableHighlight>
+        </View>
+
+        <View style={{marginLeft: 20, marginRight: 20, marginBottom: 20}}>
+          <TouchableHighlight
+            style={[styles.transparentButton, styles.button, styles.vkButton]}
+            onPress={vkAuth.bind(this)}
+            underlayColor='#edf0f8'
+          >
+            <View style={styles.inline}>
+              <Text style={[styles.vkButtonText, styles.buttonBigText]}>  Войти </Text>
+              <Text style={styles.vkButtonText}>через </Text>
+              <Icon name='vk' size={23} color='#3B5699' />
             </View>
           </TouchableHighlight>
         </View>
@@ -63,14 +63,13 @@ const styles = StyleSheet.create({
     padding: 20
   },
   transparentButton: {
-    marginTop: 30,
-    borderWidth: 2
+    marginTop: 30
   },
   vkButton: {
-    borderColor: '#3B5699'
+    backgroundColor: '#edf0f8'
   },
   githubButton: {
-    borderColor: 'black'
+    backgroundColor: '#f2f2f2'
   },
   vkButtonText: {
       fontSize: 20,
