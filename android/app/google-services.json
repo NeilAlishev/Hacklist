@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "176122286555",
+    "firebase_url": "https://hacklist-151009.firebaseio.com",
+    "project_id": "hacklist-151009",
+    "storage_bucket": "hacklist-151009.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176122286555:android:6c14342a1f3eadf0",
+        "android_client_info": {
+          "package_name": "com.hacklist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176122286555-8839mr0tnu8jqc1posfsh4d8il58ruhq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBegrlecAsZBlJGpvRJSwO61oKsqAmfw3Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176122286555-8839mr0tnu8jqc1posfsh4d8il58ruhq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
