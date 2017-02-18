@@ -42,8 +42,7 @@ export default class HackRow extends React.Component {
         <Button iconRight
           icon={{name: 'forward'}}
           title='Подробности'
-          backgroundColor='#5abfed'
-          underlayColor='#03A9F4'
+          backgroundColor='#B8B8B8'
           buttonStyle={styles.button}
           onPress={onPressCallback.bind(this)}/>
       </Card>
@@ -80,7 +79,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   button: {
-    borderRadius: 0,
+    marginTop: 5,
+    borderRadius: 10,
     marginLeft: 0,
     marginRight: 0,
     marginBottom: 0
