@@ -43,6 +43,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SimpleLineIcons.ttf</string>
 		<string>MaterialIcons.ttf</string>
 		<string>FontAwesome.ttf</string>
 	</array>
