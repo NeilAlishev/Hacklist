@@ -48,7 +48,7 @@ function backBtnCallback() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: 'white',
   },
   logoBlock: {
     alignItems: 'center',

@@ -5,7 +5,8 @@ import {
   Image,
   Linking,
   Platform,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -20,13 +21,13 @@ export default class HackPage extends React.Component {
 
     return (
       <View style={styles.container}>
-        <NavigationTab
-          text={<Icon name='arrow-left' size={20} color='black'/>}
-          navigator={this.props.navigator}
-        />
-
-        <Image source={{uri: hack.imageUrl}} resizeMode='contain'
+        <Image source={{uri: hack.imageUrl}} resizeMode='cover'
                style={styles.image}/>
+        <TouchableOpacity onPress={() => this.props.navigator.pop()}
+            style={{position: 'absolute',top: 20,left: 20}}
+        >
+          <Icon name='arrow-left' size={25} color='white'/>
+        </TouchableOpacity>
         <Text style={styles.title}>{hack.title}</Text>
         <Text style={styles.org}>{hack.organizer}</Text>
 
