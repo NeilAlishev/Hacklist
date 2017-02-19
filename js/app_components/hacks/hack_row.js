@@ -24,29 +24,27 @@ export default class HackRow extends React.Component {
     const daysFromNow = DateUtil.getDaysFromNow(hack.date);
 
     return (
-      <Card title={compoundTitle(hack)} image={{uri: hack.imageUrl}}>
-        <View>
-          <Text>
-            <Text style={styles.titleText}>Организатор: </Text>
-            <Text>{hack.organizer}</Text>
-          </Text>
-          <Text>
-            <Text style={styles.titleText}>Город: </Text>
-            <Text>{hack.city}</Text>
-          </Text>
-          <View style={styles.rowBlock}>
-            <Text style={styles.daysFromNow}>
-              <AwesomeIcon name='clock-o' size={15} color='gray'/>
-              {' '}{daysFromNow}
+      <TouchableOpacity onPress={onPressCallback.bind(this)} activeOpacity={0.9}>
+        <Card title={compoundTitle(hack)} image={{uri: hack.imageUrl}}>
+          <View>
+            <Text>
+              <Text style={styles.titleText}>Организатор: </Text>
+              <Text>{hack.organizer}</Text>
             </Text>
-            <TouchableOpacity onPress={onPressCallback.bind(this)}>
-              <Text>
-                <MaterialIcon name='arrow-right' size={20} color='gray'/>
+            <Text>
+              <Text style={styles.titleText}>Город: </Text>
+              <Text>{hack.city}</Text>
+            </Text>
+            <View style={styles.rowBlock}>
+              <Text style={styles.daysFromNow}>
+                <AwesomeIcon name='clock-o' size={15} color='gray'/>
+                {' '}{daysFromNow}
               </Text>
-            </TouchableOpacity>
+                <MaterialIcon name='arrow-right' size={20} color='gray'/>
+            </View>
           </View>
-        </View>
-      </Card>
+        </Card>
+      </TouchableOpacity>
     );
   }
 }
