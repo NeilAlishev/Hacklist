@@ -14,7 +14,7 @@ export default class NavigationTab extends React.Component {
     return (
       <View style={styles.container}>
           <TouchableOpacity onPress={onPressCallback.bind(this)}>
-              <Text style={iosPadding()}>
+              <Text style={padding()}>
                 {this.props.text}
               </Text>
           </TouchableOpacity>
@@ -27,10 +27,11 @@ function onPressCallback() {
   this.props.navigator.pop();
 }
 
-function iosPadding() {
+function padding() {
   if (Platform.OS === 'ios') {
     return {paddingTop: 13, paddingLeft: 7};
   }
+  return {paddingLeft: 9};
 }
 
 const styles = StyleSheet.create({

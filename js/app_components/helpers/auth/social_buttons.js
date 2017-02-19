@@ -14,22 +14,6 @@ export default class SocialButtons extends React.Component {
       <View>
         <View style={{marginLeft: 20, marginRight: 20, marginTop: 20}}>
           <TouchableHighlight
-            style={[styles.button, styles.vkButton]}
-            onPress={vkAuth.bind(this)}
-            underlayColor='#d2dbf2'
-          >
-            <View style={styles.inline}>
-              <Text style={[styles.vkButtonText, styles.buttonBigText]}>
-                Войти
-              </Text>
-              <Text style={styles.vkButtonText}> через </Text>
-              <Icon name='vk' size={23} style={styles.vkIcon}/>
-            </View>
-          </TouchableHighlight>
-        </View>
-
-        <View style={{marginLeft: 20, marginRight: 20, marginBottom: 20}}>
-          <TouchableHighlight
             style={[styles.button, styles.githubButton]}
             onPress={githubAuth.bind(this)}
             underlayColor='#dddddd'
@@ -40,6 +24,22 @@ export default class SocialButtons extends React.Component {
               </Text>
               <Text style={styles.githubButtonText}> через </Text>
               <Icon name='github' size={23} style={styles.githubIcon}/>
+            </View>
+          </TouchableHighlight>
+        </View>
+
+        <View style={{marginLeft: 20, marginRight: 20, marginBottom: 20}}>
+          <TouchableHighlight
+            style={[styles.button, styles.vkButton]}
+            onPress={vkAuth.bind(this)}
+            underlayColor='#d2dbf2'
+          >
+            <View style={styles.inline}>
+              <Text style={[styles.vkButtonText, styles.buttonBigText]}>
+                Войти
+              </Text>
+              <Text style={styles.vkButtonText}> через </Text>
+              <Icon name='vk' size={23} style={styles.vkIcon}/>
             </View>
           </TouchableHighlight>
         </View>
