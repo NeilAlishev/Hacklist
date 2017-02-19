@@ -40,9 +40,10 @@ export default class HackRow extends React.Component {
           </Text>
         </View>
         <Button iconRight
-          icon={{name: 'forward'}}
+          icon={{name: 'forward', color: 'black'}}
           title='Подробности'
-          backgroundColor='#B8B8B8'
+          backgroundColor='white'
+          textStyle={{color: 'black'}}
           buttonStyle={styles.button}
           onPress={onPressCallback.bind(this)}/>
       </Card>
@@ -83,7 +84,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 0,
     marginRight: 0,
-    marginBottom: 0
+    marginBottom: 0,
+    borderWidth: 1,
+    borderColor: '#B8B8B8'
   },
   daysFromNow: {
     marginTop: 5,
