@@ -26,7 +26,7 @@ export default class HackPage extends React.Component {
         <TouchableOpacity onPress={() => this.props.navigator.pop()}
           style={styles.backButton}
         >
-        <Icon name='arrow-left' size={25} color='white'/>
+          <Icon name='arrow-left' size={25} color='white'/>
         </TouchableOpacity>
         <Text style={styles.title}>{hack.title}</Text>
         <Text style={styles.org}>{hack.organizer}</Text>
