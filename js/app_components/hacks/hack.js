@@ -23,8 +23,8 @@ export default class HackPage extends React.Component {
       <View style={styles.container}>
         <Image source={{uri: hack.imageUrl}} resizeMode='cover'
                style={styles.image}/>
-        <TouchableOpacity onPress={() => this.props.navigator.pop()}
-          style={styles.backButton}
+        <TouchableOpacity style={styles.backButton}
+          onPress={() => this.props.navigator.pop()}
         >
           <Icon name='arrow-left' size={25} color='white'/>
         </TouchableOpacity>
@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 20,
-    left: 20,
+    top: 15,
+    left: 15,
     backgroundColor: 'rgba(0,0,0,0)'
   }
 });
