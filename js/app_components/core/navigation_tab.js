@@ -29,13 +29,13 @@ function onPressCallback() {
 
 function iosPadding() {
   if (Platform.OS === 'ios') {
-    return {paddingTop: 22};
+    return {paddingTop: 24};
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 12,
+    padding: 10,
     justifyContent: 'center',
     backgroundColor: '#F0F0F0'
   }

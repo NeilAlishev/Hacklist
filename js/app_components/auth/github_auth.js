@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import AuthUtil from '../../util/auth_util';
 
@@ -27,7 +27,7 @@ export default class GithubAuthPage extends React.Component {
     return (
       <View style={styles.container}>
         <NavigationTab
-          text={<Icon name='close' size={20} color='black'/>}
+          text={<Icon name='md-close' size={20} color='black'/>}
           navigator={this.props.navigator}
         />
 
