@@ -24,9 +24,9 @@ export default class HackPage extends React.Component {
         <Image source={{uri: hack.imageUrl}} resizeMode='cover'
                style={styles.image}/>
         <TouchableOpacity onPress={() => this.props.navigator.pop()}
-            style={{position: 'absolute',top: 20,left: 20}}
+          style={styles.backButton}
         >
-          <Icon name='arrow-left' size={25} color='white'/>
+        <Icon name='arrow-left' size={25} color='white'/>
         </TouchableOpacity>
         <Text style={styles.title}>{hack.title}</Text>
         <Text style={styles.org}>{hack.organizer}</Text>
@@ -90,5 +90,11 @@ const styles = StyleSheet.create({
   },
   info: {
     paddingTop: 5
+  },
+  backButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    backgroundColor: 'rgba(0,0,0,0)'
   }
 });

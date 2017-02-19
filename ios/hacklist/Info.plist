@@ -43,11 +43,12 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Ionicons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>FontAwesome.ttf</string>
 		<string>MaterialCommunityIcons.ttf</string>
 		<string>EvilIcons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
-		<string>MaterialIcons.ttf</string>
-		<string>FontAwesome.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

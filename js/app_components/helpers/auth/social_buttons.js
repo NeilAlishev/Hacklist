@@ -74,26 +74,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2'
   },
   vkButtonText: {
-      fontSize: 20,
-      color: '#3B5699'
+    fontSize: 20,
+    color: '#3B5699'
   },
   githubButtonText: {
-      fontSize: 20,
-      color: 'black'
+    fontSize: 20,
+    color: 'black'
   },
   vkIcon: {
-      color: '#3B5699',
-      marginTop: 2
+    marginTop: 2,
+    color: '#3B5699'
   },
   githubIcon: {
-      color: 'black',
-      marginTop: 3
+    marginTop: 3,
+    color: 'black'
   },
   buttonBigText: {
-      fontSize: 20,
-      fontWeight: 'bold'
+    fontSize: 20,
+    fontWeight: 'bold'
   },
   inline: {
-      flexDirection: 'row'
+    flexDirection: 'row'
   }
 });
