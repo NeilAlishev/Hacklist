@@ -6,11 +6,11 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
+
 import {
   Card,
   Button
 } from 'react-native-elements';
-
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -56,13 +56,11 @@ function compoundTitle(hack) {
     return(
       <Text>
         <SimpleLineIcon name='fire' size={17} color='red'/>
-        {' '}
-        {hack.title}
+        {' '} {hack.title}
       </Text>
     );
-  } else {
-    return hack.title;
   }
+  return hack.title;
 }
 
 function onPressCallback() {
