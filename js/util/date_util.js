@@ -23,8 +23,12 @@ export default DateUtil = {
     ];
 
     date = new Date(date);
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
     const formattedDate = date.getDate() + " " + months[date.getMonth()];
-    const formattedTime = date.getHours() + ":" + date.getMinutes();
+    const formattedTime = date.getHours() + ":" + minutes;
 
     return formattedDate + ", в " + formattedTime;
   },
@@ -34,7 +38,7 @@ export default DateUtil = {
     let now = new Date();
 
     if(eventDate - now < 0) {
-      return "Уже идет";
+      return "Уже начался";
     }
 
     let utc1 = Date.UTC(
