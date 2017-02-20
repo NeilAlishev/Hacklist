@@ -24,7 +24,8 @@ export default class SocialButtons extends React.Component {
                 Войти
               </Text>
               <Text style={styles.githubButtonText}> через </Text>
-              <Icon name='github' size={23} style={[styles.githubIcon, githubIconMargin()]}/>
+              <Icon name='github' size={23}
+                style={[styles.githubIcon, githubIconMargin()]}/>
             </View>
           </TouchableHighlight>
         </View>
@@ -40,7 +41,8 @@ export default class SocialButtons extends React.Component {
                 Войти
               </Text>
               <Text style={styles.vkButtonText}> через </Text>
-              <Icon name='vk' size={23} style={[styles.vkIcon, vkIconMargin()]}/>
+              <Icon name='vk' size={23}
+                style={[styles.vkIcon, vkIconMargin()]}/>
             </View>
           </TouchableHighlight>
         </View>
