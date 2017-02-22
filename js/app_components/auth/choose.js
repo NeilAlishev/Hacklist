@@ -4,12 +4,12 @@ import {
   Text,
   Platform,
   StyleSheet,
-  BackAndroid
+  BackAndroid,
+  Alert
 } from 'react-native';
 
 import Route from '../../enums/route';
 import Logo from '../helpers/auth/logo';
-import ErrorBlock from '../helpers/auth/error_block';
 import SocialButtons from '../helpers/auth/social_buttons';
 
 export default class ChoosePage extends React.Component {
@@ -22,12 +22,15 @@ export default class ChoosePage extends React.Component {
   }
 
   render() {
+    if(this.props.error) {
+      displayAlert();
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.logoBlock}>
           <Logo/>
         </View>
-        {this.props.error ? <ErrorBlock/> : null}
         <SocialButtons navigator={this.props.navigator}/>
       </View>
     );
@@ -43,6 +46,17 @@ function backBtnCallback() {
     return true;
   }
   return false;
+}
+
+function displayAlert() {
+  Alert.alert(
+    'Ой!',
+    'У нас не получилось войти. \n Дайте нам еще один шанс!',
+    [{
+      text: 'Ладно'
+    }],
+    { cancelable: false }
+  );
 }
 
 const styles = StyleSheet.create({
