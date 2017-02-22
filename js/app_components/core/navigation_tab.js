@@ -29,7 +29,7 @@ function onPressCallback() {
 
 function padding() {
   if (Platform.OS === 'ios') {
-    return {paddingTop: 13, paddingLeft: 7};
+    return {paddingTop: 15, paddingLeft: 7};
   }
   return {paddingLeft: 9};
 }
