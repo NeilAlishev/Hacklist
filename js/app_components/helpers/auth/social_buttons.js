@@ -3,7 +3,8 @@ import {
   View,
   TouchableHighlight,
   StyleSheet,
-  Text
+  Text,
+  Platform
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -23,7 +24,9 @@ export default class SocialButtons extends React.Component {
                 Войти
               </Text>
               <Text style={styles.githubButtonText}> через </Text>
-              <Icon name='github' size={23} style={styles.githubIcon}/>
+              <Icon name='github' size={23}
+                style={[styles.githubIcon, githubIconMargin()]}
+              />
             </View>
           </TouchableHighlight>
         </View>
@@ -39,7 +42,9 @@ export default class SocialButtons extends React.Component {
                 Войти
               </Text>
               <Text style={styles.vkButtonText}> через </Text>
-              <Icon name='vk' size={23} style={styles.vkIcon}/>
+              <Icon name='vk' size={23}
+                style={[styles.vkIcon, vkIconMargin()]}
+              />
             </View>
           </TouchableHighlight>
         </View>
@@ -58,6 +63,18 @@ function vkAuth() {
   this.props.navigator.push({
     id: Route.vkAuth
   });
+}
+
+function vkIconMargin() {
+  if (Platform.OS === 'android') {
+    return {marginTop: 2};
+  }
+}
+
+function githubIconMargin() {
+  if (Platform.OS === 'android') {
+    return {marginTop: 3};
+  }
 }
 
 const styles = StyleSheet.create({
@@ -82,11 +99,9 @@ const styles = StyleSheet.create({
     color: 'black'
   },
   vkIcon: {
-    marginTop: 2,
     color: '#3B5699'
   },
   githubIcon: {
-    marginTop: 3,
     color: 'black'
   },
   buttonBigText: {

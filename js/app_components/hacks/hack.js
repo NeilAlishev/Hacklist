@@ -23,7 +23,7 @@ export default class HackPage extends React.Component {
       <View style={styles.container}>
         <Image source={{uri: hack.imageUrl}} resizeMode='cover'
                style={styles.image}/>
-        <TouchableOpacity style={styles.backButton}
+        <TouchableOpacity style={[styles.backButton, iosPadding()]}
           onPress={() => this.props.navigator.pop()}
         >
           <Icon name='arrow-left' size={25} color='white'/>
@@ -57,6 +57,12 @@ export default class HackPage extends React.Component {
 
 function onPressCallback() {
   Linking.openURL(this.props.hack.url);
+}
+
+function iosPadding() {
+  if (Platform.OS === 'ios') {
+    return {paddingTop: 10};
+  }
 }
 
 const styles = StyleSheet.create({
