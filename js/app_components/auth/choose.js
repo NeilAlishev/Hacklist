@@ -2,10 +2,10 @@ import React from 'react';
 import {
   View,
   Text,
+  Alert,
   Platform,
   StyleSheet,
-  BackAndroid,
-  Alert
+  BackAndroid
 } from 'react-native';
 
 import Route from '../../enums/route';
@@ -50,11 +50,10 @@ function backBtnCallback() {
 
 function displayAlert() {
   Alert.alert(
-    'Ой!',
-    'У нас не получилось войти. \n Дайте нам еще один шанс!',
-    [{
-      text: 'Ладно'
-    }],
+    'Упс!',
+    'Что-то помешало нам авторизовать вас.\n' +
+    'Дайте нам еще один шанс, пожалуйста!',
+    [{ text: 'Хорошо!' }],
     { cancelable: false }
   );
 }
