@@ -14,7 +14,26 @@ export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.getHacks();
+  }
 
+  render() {
+    const hacks = this.state.hacks;
+    const error = this.state.error;
+
+    if (hacks) {
+      return <HackDispatcher hacks={hacks}/>;
+    }
+
+    if (error) {
+      this.state.error = false;
+      return <ChoosePage navigator={this.props.navigator} error={true}/>;
+    } else {
+      return <Spinner/>;
+    }
+  }
+
+  getHacks() {
     AsyncStorage.getItem('client_token', (err, token) => {
       token = JSON.parse(token);
       fetch(Environment.BASE_URL + Api.hacks + token)
@@ -28,19 +47,5 @@ export default class MainPage extends React.Component {
         .catch((error) => console.error(error))
         .done();
     });
-  }
-
-  render() {
-    const hacks = this.state.hacks
-    const error = this.state.error
-
-    if (hacks) {
-      return <HackDispatcher hacks={hacks}/>;
-    }
-    if (error) {
-      return <ChoosePage navigator={this.props.navigator} error={true}/>;
-    } else {
-      return <Spinner/>
-    }
   }
 }
