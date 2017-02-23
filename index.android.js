@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  AppRegistry
-} from 'react-native';
+import { AppRegistry } from 'react-native';
 
 import InitialDispatcher from './js/app_components/initial_dispatcher';
 

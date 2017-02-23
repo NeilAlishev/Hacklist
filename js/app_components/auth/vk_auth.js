@@ -2,8 +2,7 @@ import React from 'react';
 import {
   WebView,
   AsyncStorage,
-  View,
-  StyleSheet
+  View
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -25,7 +24,7 @@ export default class VkAuthPage extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1}}>
         <NavigationTab
           text={<Icon name='md-close' size={20} color='black'/>}
           navigator={this.props.navigator}
@@ -59,7 +58,3 @@ function onNavigationStateChangeCallback(state) {
     });
   }
 }
-
-const styles = StyleSheet.create({
-  container: {flex: 1}
-});

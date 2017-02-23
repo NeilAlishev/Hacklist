@@ -19,12 +19,7 @@ export default class InitialDispatcher extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-
-    AsyncStorage.getItem('client_token', (err, res) => {
-      this.setState({
-        token: res
-      });
-    });
+    this.setClientToken();
     checkInternetConn.apply(this);
   }
 
@@ -37,15 +32,7 @@ export default class InitialDispatcher extends React.Component {
     }
 
     if (!conn) {
-      Alert.alert(
-        'Привет!',
-        'Нужно подключение к интернету',
-        [{
-          text: 'Поехали!',
-          onPress: checkInternetConn.bind(this)
-        }],
-        { cancelable: false }
-      );
+      this.displayAlert();
       return null;
     }
 
@@ -55,6 +42,26 @@ export default class InitialDispatcher extends React.Component {
         initialRoute={{id: initialRoute}}
         renderScene={navigatorRenderScene}
         configureScene={navigatorConfigureScene}/>
+    );
+  }
+
+  setClientToken() {
+    AsyncStorage.getItem('client_token', (err, res) => {
+      this.setState({
+        token: res
+      });
+    });
+  }
+
+  displayAlert() {
+    Alert.alert(
+      'Привет!',
+      'Нужно подключение к интернету',
+      [{
+        text: 'Поехали!',
+        onPress: checkInternetConn.bind(this)
+      }],
+      { cancelable: false }
     );
   }
 }
