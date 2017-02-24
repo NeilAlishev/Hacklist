@@ -29,11 +29,10 @@ export default class HackPage extends React.Component {
         >
           <Icon name='arrow-left' size={25} color='white'/>
         </TouchableOpacity>
-        <Text style={styles.title}>{hack.title}</Text>
-        <Text style={styles.org}>{hack.organizer}</Text>
-
-        <View style={styles.body}>
-          <Text>{hack.description}</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>{hack.title}</Text>
+          <Text style={styles.org}>{hack.organizer}</Text>
+          <Text style={styles.description}>{hack.description}</Text>
           <View style={styles.info}>
             <Text>
               <Text style={styles.titleText}>Где? </Text>
@@ -71,18 +70,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
-  body: {
+  textContainer: {
     padding: 5
   },
   title: {
-    alignSelf: 'center',
-    fontSize: 20,
-    fontStyle: 'italic'
+    fontFamily: 'MyriadPro-Regular',
+    fontSize: 30
   },
   org: {
-    alignSelf: 'center',
+    fontFamily: 'MyriadPro-Regular',
     fontSize: 15,
-    fontStyle: 'italic'
+    color: 'gray'
   },
   image: {
     alignSelf: 'stretch',
@@ -103,5 +101,9 @@ const styles = StyleSheet.create({
     top: 15,
     left: 15,
     backgroundColor: 'rgba(0,0,0,0)'
+  },
+  description: {
+    fontFamily: 'MyriadPro-Regular',
+    fontSize: 20
   }
 });

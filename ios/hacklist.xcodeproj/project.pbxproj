@@ -23,6 +23,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		284DC76B1E6070C300674B54 /* Myriad.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 284DC76A1E6070C300674B54 /* Myriad.ttf */; };
 		28603E091E3F64BA00946229 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28603DEF1E3F647000946229 /* libCodePush.a */; };
 		28603E0C1E3F64E700946229 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28603E0B1E3F64E700946229 /* libz.tbd */; };
 		28BF6FB21E366DE400465EDC /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28BF6FA81E366DE300465EDC /* Entypo.ttf */; };
@@ -265,6 +266,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Hacklist/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Hacklist/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		284DC76A1E6070C300674B54 /* Myriad.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Myriad.ttf; sourceTree = "<group>"; };
 		28603DEA1E3F647000946229 /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		28603E0B1E3F64E700946229 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		28BF6FA81E366DE300465EDC /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				284DC76A1E6070C300674B54 /* Myriad.ttf */,
 				28BF6FA71E366DE300465EDC /* Fonts */,
 				13B07FAE1A68108700A75B9A /* Hacklist */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -909,6 +912,7 @@
 				28BF6FBE1E366DE400465EDC /* MaterialIcons.ttf in Resources */,
 				28BF6FB21E366DE400465EDC /* Entypo.ttf in Resources */,
 				28BF6FBC1E366DE400465EDC /* MaterialCommunityIcons.ttf in Resources */,
+				284DC76B1E6070C300674B54 /* Myriad.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
