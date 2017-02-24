@@ -24,7 +24,7 @@ export default class HackList extends React.Component {
         dataSource={dataSource.apply(this)}
         renderRow={renderRow.bind(this)}
         enableEmptySections={true}
-        style={[styles.container, iosPadding()]}/>
+        style={[styles.container, padding()]}/>
     );
   }
 }
@@ -51,14 +51,14 @@ function renderRow(hack) {
   return <HackRow hack={hack} navigator={this.props.navigator}/>;
 }
 
-function iosPadding() {
+function padding() {
   if (Platform.OS === 'ios') {
-    return {paddingTop: 20}
+    return {paddingTop: 35};
+  } else {
+    return {paddingTop: 15};
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white'
-  }
+  container: {backgroundColor: 'white'}
 });

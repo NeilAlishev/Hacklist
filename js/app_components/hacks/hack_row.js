@@ -23,7 +23,11 @@ export default class HackRow extends React.Component {
 
     return (
       <TouchableOpacity onPress={onPressCallback.bind(this)} activeOpacity={0.9}>
-        <Card title={compoundTitle(hack)} image={{uri: hack.imageUrl}}>
+        <Card
+          title={compoundTitle(hack)}
+          image={{uri: hack.imageUrl}}
+          containerStyle={{marginTop: 0, marginBottom: 15}}
+        >
           <View>
             <Text>
               <Text style={styles.titleText}>Организатор: </Text>

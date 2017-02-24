@@ -6,7 +6,8 @@ import {
   Linking,
   Platform,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -20,7 +21,7 @@ export default class HackPage extends React.Component {
           : DateUtil.getDateTimeAndroid(hack.date);
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Image source={{uri: hack.imageUrl}} resizeMode='cover'
                style={styles.image}/>
         <TouchableOpacity style={[styles.backButton, iosPadding()]}
@@ -50,7 +51,7 @@ export default class HackPage extends React.Component {
             </Text>
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
