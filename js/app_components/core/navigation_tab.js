@@ -2,9 +2,9 @@ import React from 'react';
 import {
   Text,
   View,
+  Platform,
   StyleSheet,
   TouchableOpacity,
-  Platform
 } from 'react-native';
 
 import Route from '../../enums/route';

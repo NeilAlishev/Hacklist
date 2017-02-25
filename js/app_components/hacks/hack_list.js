@@ -2,8 +2,8 @@ import React from 'react';
 import {
   ListView,
   Platform,
-  BackAndroid,
-  StyleSheet
+  StyleSheet,
+  BackAndroid
 } from 'react-native';
 
 import HackRow from './hack_row';
@@ -16,6 +16,9 @@ export default class HackList extends React.Component {
         'hardwareBackPress', backBtnCallback.bind(this)
       );
     }
+    this.state = {
+      rowCount: 0
+    }
   }
 
   render() {
@@ -24,7 +27,7 @@ export default class HackList extends React.Component {
         dataSource={dataSource.apply(this)}
         renderRow={renderRow.bind(this)}
         enableEmptySections={true}
-        style={[styles.container, padding()]}/>
+        style={styles.list}/>
     );
   }
 }
@@ -48,17 +51,22 @@ function dataSource() {
 }
 
 function renderRow(hack) {
-  return <HackRow hack={hack} navigator={this.props.navigator}/>;
+  const firstRow = this.state.rowCount % this.props.hacks.length === 0;
+  let margin = firstRow ? getMargin() : 0;
+  const style = {
+    marginTop: margin,
+    marginBottom: 15
+  }
+  this.state.rowCount++;
+  return <HackRow hack={hack} navigator={this.props.navigator} style={style}/>;
 }
 
-function padding() {
-  if (Platform.OS === 'ios') {
-    return {paddingTop: 35};
-  } else {
-    return {paddingTop: 15};
-  }
+function getMargin() {
+  return Platform.OS === 'android' ? 15 : 35;
 }
 
 const styles = StyleSheet.create({
-  container: {backgroundColor: 'white'}
+  list: {
+    backgroundColor: 'white'
+  }
 });
