@@ -12,9 +12,11 @@ import {Card} from 'react-native-elements';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Octicon from 'react-native-vector-icons/Octicons';
 
 import Route from '../../enums/route';
 import DateUtil from '../../util/date_util.js';
+import CustomText from '../core/custom_text';
 
 export default class HackRow extends React.Component {
   render() {
@@ -29,19 +31,26 @@ export default class HackRow extends React.Component {
           containerStyle={{marginTop: 0, marginBottom: 15}}
         >
           <View>
-            <Text>
-              <Text style={styles.titleText}>Организатор: </Text>
-              <Text>{hack.organizer}</Text>
-            </Text>
-            <Text>
-              <Text style={styles.titleText}>Город: </Text>
-              <Text>{hack.city}</Text>
-            </Text>
+            <View style={styles.body}>
+              <Text>
+                <Octicon name='organization' size={15}/>
+                {' '}
+                <CustomText>{hack.organizer}</CustomText>
+              </Text>
+              <Text>
+                <MaterialIcon name='city' size={15}/>
+                {' '}
+                <CustomText>{hack.city}</CustomText>
+              </Text>
+            </View>
+
+            <View style={styles.hr}/>
+
             <View style={styles.rowBlock}>
-              <Text style={styles.daysFromNow}>
+              <CustomText style={{color: 'gray'}}>
                 <AwesomeIcon name='clock-o' size={15} color='gray'/>
                 {' '}{daysFromNow}
-              </Text>
+              </CustomText>
                 <MaterialIcon name='arrow-right' size={20} color='gray'/>
             </View>
           </View>
@@ -71,15 +80,16 @@ function onPressCallback() {
 }
 
 const styles = StyleSheet.create({
-  titleText: {
-    fontWeight: 'bold'
-  },
-  daysFromNow: {
-    color: 'gray'
-  },
   rowBlock: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 5
+  },
+  body: {
+    marginBottom: 5
+  },
+  hr: {
+    borderBottomWidth: 1,
+    borderColor: '#d7d7d7'
   }
 });

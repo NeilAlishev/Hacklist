@@ -10,9 +10,12 @@ import {
   ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import NavigationTab from '../core/navigation_tab';
 import DateUtil from '../../util/date_util.js';
+import CustomText from '../core/custom_text';
 
 export default class HackPage extends React.Component {
   render() {
@@ -29,25 +32,34 @@ export default class HackPage extends React.Component {
         >
           <Icon name='arrow-left' size={25} color='white'/>
         </TouchableOpacity>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{hack.title}</Text>
-          <Text style={styles.org}>{hack.organizer}</Text>
-          <Text style={styles.description}>{hack.description}</Text>
+        <View style={styles.header}>
+          <CustomText style={styles.title}>{hack.title}</CustomText>
+          <CustomText style={styles.org}>{hack.organizer}</CustomText>
+        </View>
+
+        <View style={styles.hr}/>
+
+        <View style={styles.body}>
+          <CustomText style={styles.description}>{hack.description}</CustomText>
           <View style={styles.info}>
             <Text>
-              <Text style={styles.titleText}>Где? </Text>
-              <Text>г.{hack.city}, {hack.address}</Text>
+              <MaterialIcon name='map-marker' size={20} color='#ff6666'/>
+              {' '}
+              <CustomText>г.{hack.city}, {hack.address}</CustomText>
             </Text>
-            <Text>
-              <Text style={styles.titleText}>Когда? </Text>
-              <Text>{dateTime}</Text>
+            <Text style={{paddingLeft: 2}}>
+              <AwesomeIcon name='clock-o' size={18} color='#ff6666'/>
+              {' '}
+              <CustomText>{dateTime}</CustomText>
             </Text>
-            <Text>
-              <Text style={styles.titleText}>Подробности </Text>
-              <Text style={styles.link} onPress={onPressCallback.bind(this)}>
-                по ссылке
-              </Text>
-            </Text>
+            <TouchableOpacity
+              style={styles.linkBlock}
+              onPress={onPressCallback.bind(this)}
+              activeOpacity={0.7}
+            >
+              <Text style={{color: '#ff6666', fontSize: 15}}>Зарегистрироваться </Text>
+              <MaterialIcon name='arrow-right' size={20} color='#ff6666'/>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -70,17 +82,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
-  textContainer: {
-    padding: 5
+  header: {
+    paddingTop: 20,
+    paddingHorizontal: 10
+  },
+  body: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
+    marginTop: 10
   },
   title: {
-    fontFamily: 'MyriadPro-Regular',
     fontSize: 30
   },
   org: {
-    fontFamily: 'MyriadPro-Regular',
     fontSize: 15,
-    color: 'gray'
+    color: 'gray',
+    paddingVertical: 10
   },
   image: {
     alignSelf: 'stretch',
@@ -89,12 +106,13 @@ const styles = StyleSheet.create({
   titleText: {
     fontWeight: 'bold'
   },
-  link: {
-    color: 'blue',
-    textDecorationLine: 'underline'
+  linkBlock: {
+    alignSelf: 'flex-end',
+    flexDirection: 'row',
+    marginTop: 5
   },
   info: {
-    paddingTop: 5
+    paddingTop: 10
   },
   backButton: {
     position: 'absolute',
@@ -103,7 +121,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)'
   },
   description: {
-    fontFamily: 'MyriadPro-Regular',
     fontSize: 20
+  },
+  hr: {
+    borderBottomWidth: 1,
+    borderColor: '#d7d7d7'
   }
 });
