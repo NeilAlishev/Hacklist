@@ -5,15 +5,12 @@ import {
   View,
   StyleSheet
 } from 'react-native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import NavigationTab from '../core/navigation_tab';
 import AuthUtil from '../../util/auth_util';
-
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
-
-import NavigationTab from '../core/navigation_tab';
 
 export default class VkAuthPage extends React.Component {
   constructor(props) {

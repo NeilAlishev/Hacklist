@@ -43,6 +43,8 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Octicons.ttf</string>
+		<string>Myriad.ttf</string>
 		<string>Ionicons.ttf</string>
 		<string>MaterialIcons.ttf</string>
 		<string>FontAwesome.ttf</string>
