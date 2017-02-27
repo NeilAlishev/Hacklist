@@ -4,15 +4,18 @@ import {
   View,
   Image,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
-
 import {
   Card
 } from 'react-native-elements';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Octicon from 'react-native-vector-icons/Octicons';
+
+import CustomText from '../core/custom_text';
 
 import DateUtil from '../../util/date_util.js';
 import Route from '../../enums/route';
@@ -24,23 +27,26 @@ export default class HackRow extends React.Component {
 
     return (
       <TouchableOpacity onPress={onPressCallback.bind(this)} activeOpacity={0.9}>
-        <Card title={compoundTitle(hack)} image={{uri: hack.imageUrl}}>
-          <View>
-            <Text>
-              <Text style={styles.titleText}>Организатор: </Text>
-              <Text>{hack.organizer}</Text>
-            </Text>
-            <Text>
-              <Text style={styles.titleText}>Город: </Text>
-              <Text>{hack.city}</Text>
-            </Text>
-            <View style={styles.rowBlock}>
-              <Text style={styles.daysFromNow}>
-                <AwesomeIcon name='clock-o' size={15} color='gray'/>
-                {' '}{daysFromNow}
-              </Text>
-                <MaterialIcon name='arrow-right' size={20} color='gray'/>
-            </View>
+        <Card title={compoundTitle(hack)} image={{uri: hack.imageUrl}}
+              containerStyle={this.props.style}>
+          <Text>
+            <Octicon name='organization' style={styles.icon}/>
+            <CustomText style={{color: 'gray'}}>
+              {' '}{hack.organizer}
+            </CustomText>
+          </Text>
+          <Text>
+            <MaterialIcon name='city' style={styles.icon}/>
+            <CustomText style={{color: 'gray'}}>
+              {' '}{hack.city}
+            </CustomText>
+          </Text>
+          <View style={styles.rowBlock}>
+            <CustomText style={{color: 'gray', paddingLeft: 1}}>
+              <AwesomeIcon name='clock-o' size={16}/>
+              {' '}{daysFromNow}
+            </CustomText>
+            <MaterialIcon name='arrow-right' size={18} color='gray'/>
           </View>
         </Card>
       </TouchableOpacity>
@@ -49,15 +55,19 @@ export default class HackRow extends React.Component {
 }
 
 function compoundTitle(hack) {
+  let icon, space;
   if (hack.category === 'TOP') {
-    return(
-      <Text>
-        <SimpleIcon name='fire' size={17} color='red'/>
-        {' '}{hack.title}
-      </Text>
-    );
+    icon = <SimpleIcon name='fire' size={15} color='red'/>;
+    space = ' ';
   }
-  return hack.title;
+  return (
+    <Text>
+      {icon}{space}
+      <CustomText style={titleColor()}>
+        {hack.title}
+      </CustomText>
+    </Text>
+  );
 }
 
 function onPressCallback() {
@@ -67,16 +77,18 @@ function onPressCallback() {
   });
 }
 
+function titleColor() {
+  let colorCode = Platform.OS === 'ios' ? '#2a2a2a' : '#4c4747';
+  return {color: colorCode};
+}
+
 const styles = StyleSheet.create({
-  titleText: {
-    fontWeight: 'bold'
-  },
-  daysFromNow: {
-    color: 'gray'
-  },
   rowBlock: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 5
+    justifyContent: 'space-between'
+  },
+  icon: {
+    fontSize: 15,
+    color: 'gray'
   }
 });

@@ -4,7 +4,6 @@ import {
   WebView,
   AsyncStorage,
 } from 'react-native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import NavigationTab from '../core/navigation_tab';
