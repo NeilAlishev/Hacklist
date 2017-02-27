@@ -37,7 +37,7 @@ export default class SocialButtons extends React.Component {
             onPress={vkAuth.bind(this)}
             underlayColor='#d2dbf2'
           >
-            <View style={styles.inline}>
+            <View style={[styles.inline, {paddingLeft: 3}]}>
               <Text style={[styles.vkButtonText, styles.buttonText]}>
                 Войти
               </Text>
@@ -101,12 +101,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   vkIcon: {
-    color: '#3B5699',
-    fontSize: 23
+    fontSize: 22,
+    color: '#3B5699'
   },
   githubIcon: {
-    color: 'black',
-    fontSize: 23
+    fontSize: 23,
+    color: 'black'
   },
   inline: {
     flexDirection: 'row'
