@@ -1,13 +1,13 @@
 import React from 'react';
 import {
+  View,
   WebView,
   AsyncStorage,
-  View,
-  StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import NavigationTab from '../core/navigation_tab';
+
 import AuthUtil from '../../util/auth_util';
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
@@ -22,7 +22,7 @@ export default class VkAuthPage extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1}}>
         <NavigationTab
           text={<Icon name='md-close' size={20} color='black'/>}
           navigator={this.props.navigator}
@@ -56,7 +56,3 @@ function onNavigationStateChangeCallback(state) {
     });
   }
 }
-
-const styles = StyleSheet.create({
-  container: {flex: 1}
-});

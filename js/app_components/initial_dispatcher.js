@@ -7,11 +7,11 @@ import {
   AsyncStorage
 } from 'react-native';
 
+import Spinner from './core/spinner';
+import MainPage from './main';
 import ChoosePage from './auth/choose';
 import GithubAuthPage from './auth/github_auth';
 import VkAuthPage from './auth/vk_auth';
-import MainPage from './main';
-import Spinner from './core/spinner';
 
 import Route from '../enums/route';
 
@@ -19,12 +19,7 @@ export default class InitialDispatcher extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-
-    AsyncStorage.getItem('client_token', (err, res) => {
-      this.setState({
-        token: res
-      });
-    });
+    this.setClientToken();
     checkInternetConn.apply(this);
   }
 
@@ -37,15 +32,7 @@ export default class InitialDispatcher extends React.Component {
     }
 
     if (!conn) {
-      Alert.alert(
-        'Привет!',
-        'Нужно подключение к интернету',
-        [{
-          text: 'Поехали!',
-          onPress: checkInternetConn.bind(this)
-        }],
-        { cancelable: false }
-      );
+      this.displayAlert();
       return null;
     }
 
@@ -54,7 +41,28 @@ export default class InitialDispatcher extends React.Component {
       <Navigator
         initialRoute={{id: initialRoute}}
         renderScene={navigatorRenderScene}
-        configureScene={navigatorConfigureScene}/>
+        configureScene={navigatorConfigureScene}
+      />
+    );
+  }
+
+  setClientToken() {
+    AsyncStorage.getItem('client_token', (err, res) => {
+      this.setState({
+        token: res
+      });
+    });
+  }
+
+  displayAlert() {
+    Alert.alert(
+      'Привет!',
+      'Нужно подключение к интернету',
+      [{
+        text: 'Поехали!',
+        onPress: checkInternetConn.bind(this)
+      }],
+      { cancelable: false }
     );
   }
 }
@@ -67,9 +75,11 @@ function checkInternetConn() {
       });
     });
   } else {
-    NetInfo.addEventListener('change',
-      (isConnected)=> {this.setState({conn: isConnected})}
-    )
+    NetInfo.addEventListener('change', isConnected => {
+      this.setState({
+        conn: isConnected
+      });
+    });
   }
 }
 
@@ -82,7 +92,7 @@ function navigatorRenderScene(route, navigator) {
     case Route.vkAuth:
       return <VkAuthPage navigator={navigator}/>;
     case Route.main:
-      return (<MainPage navigator={navigator}/>);
+      return <MainPage navigator={navigator}/>;
   }
 }
 

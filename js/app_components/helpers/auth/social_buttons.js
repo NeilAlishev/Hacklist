@@ -1,17 +1,17 @@
 import React from 'react';
 import {
-  View,
-  TouchableHighlight,
-  StyleSheet,
   Text,
-  Platform
+  View,
+  Platform,
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class SocialButtons extends React.Component {
   render() {
-    return(
+    return (
       <View>
         <View style={{marginLeft: 20, marginRight: 20, marginTop: 20}}>
           <TouchableHighlight
@@ -20,11 +20,11 @@ export default class SocialButtons extends React.Component {
             underlayColor='#dddddd'
           >
             <View style={styles.inline}>
-              <Text style={[styles.githubButtonText, styles.buttonBigText]}>
+              <Text style={[styles.githubButtonText, styles.buttonText]}>
                 Войти
               </Text>
               <Text style={styles.githubButtonText}> через </Text>
-              <Icon name='github' size={23}
+              <Icon name='github'
                 style={[styles.githubIcon, githubIconMargin()]}
               />
             </View>
@@ -38,13 +38,11 @@ export default class SocialButtons extends React.Component {
             underlayColor='#d2dbf2'
           >
             <View style={styles.inline}>
-              <Text style={[styles.vkButtonText, styles.buttonBigText]}>
+              <Text style={[styles.vkButtonText, styles.buttonText]}>
                 Войти
               </Text>
               <Text style={styles.vkButtonText}> через </Text>
-              <Icon name='vk' size={23}
-                style={[styles.vkIcon, vkIconMargin()]}
-              />
+              <Icon name='vk' style={[styles.vkIcon, vkIconMargin()]}/>
             </View>
           </TouchableHighlight>
         </View>
@@ -98,15 +96,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black'
   },
-  vkIcon: {
-    color: '#3B5699'
-  },
-  githubIcon: {
-    color: 'black'
-  },
-  buttonBigText: {
+  buttonText: {
     fontSize: 20,
     fontWeight: 'bold'
+  },
+  vkIcon: {
+    color: '#3B5699',
+    fontSize: 23
+  },
+  githubIcon: {
+    color: 'black',
+    fontSize: 23
   },
   inline: {
     flexDirection: 'row'

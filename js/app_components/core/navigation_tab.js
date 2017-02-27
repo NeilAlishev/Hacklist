@@ -13,7 +13,7 @@ export default class NavigationTab extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <TouchableOpacity onPress={onPressCallback.bind(this)}>
+          <TouchableOpacity onPress={() => this.props.navigator.pop()}>
               <Text style={padding()}>
                 {this.props.text}
               </Text>
@@ -21,10 +21,6 @@ export default class NavigationTab extends React.Component {
       </View>
     );
   }
-}
-
-function onPressCallback() {
-  this.props.navigator.pop();
 }
 
 function padding() {

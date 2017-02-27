@@ -6,7 +6,7 @@ import {
 
 export default class Logo extends React.Component {
   render() {
-    return(
+    return (
       <Image
         style={styles.logo}
         source={require('../../../resources/images/logo.png')}

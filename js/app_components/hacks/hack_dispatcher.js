@@ -6,6 +6,7 @@ import {
 
 import HackPage from './hack';
 import HackList from './hack_list';
+
 import Route from '../../enums/route';
 
 export default class HackDispatcher extends React.Component {

@@ -1,16 +1,17 @@
 import React from 'react';
 import {
-  View,
   Text,
+  View,
   Alert,
   Platform,
   StyleSheet,
   BackAndroid
 } from 'react-native';
 
-import Route from '../../enums/route';
 import Logo from '../helpers/auth/logo';
 import SocialButtons from '../helpers/auth/social_buttons';
+
+import Route from '../../enums/route';
 
 export default class ChoosePage extends React.Component {
   componentWillMount() {
@@ -22,15 +23,13 @@ export default class ChoosePage extends React.Component {
   }
 
   render() {
-    if(this.props.error) {
+    if (this.props.error) {
       displayAlert();
     }
 
     return (
       <View style={styles.container}>
-        <View style={styles.logoBlock}>
-          <Logo/>
-        </View>
+        <View style={styles.logo}><Logo/></View>
         <SocialButtons navigator={this.props.navigator}/>
       </View>
     );
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: 'white',
   },
-  logoBlock: {
+  logo: {
     alignItems: 'center',
     marginTop: 40
   }

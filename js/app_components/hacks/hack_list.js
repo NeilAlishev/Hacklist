@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import HackRow from './hack_row';
+
 import Route from '../../enums/route';
 
 export default class HackList extends React.Component {

@@ -16,6 +16,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Octicon from 'react-native-vector-icons/Octicons';
 
 import CustomText from '../core/custom_text';
+
 import DateUtil from '../../util/date_util.js';
 import Route from '../../enums/route';
 
