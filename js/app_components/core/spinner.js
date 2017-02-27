@@ -1,20 +1,19 @@
 import React from 'react';
-import {ActivityIndicator, StyleSheet} from 'react-native';
+import {
+  StyleSheet,
+  ActivityIndicator
+} from 'react-native';
 
 export default class Spinner extends React.Component {
   render() {
-    return (
-      <ActivityIndicator
-        animating={true}
-        style={[styles.centering, {height: 80}]}
-      />
-    );
+    return <ActivityIndicator animating={true} style={styles.spinner}/>
   }
 }
 
 const styles = StyleSheet.create({
-  centering: {
+  spinner: {
     flex: 1,
+    height: 80,
     alignItems: 'center',
     justifyContent: 'center'
   }

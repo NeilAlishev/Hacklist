@@ -1,18 +1,17 @@
 import React from 'react';
 import {
+  View,
   WebView,
   AsyncStorage,
-  View
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import AuthUtil from '../../util/auth_util';
+import NavigationTab from '../core/navigation_tab';
 
+import AuthUtil from '../../util/auth_util';
 import Route from '../../enums/route';
 import Environment from '../../environment/environment';
-
-import NavigationTab from '../core/navigation_tab';
 
 export default class VkAuthPage extends React.Component {
   constructor(props) {

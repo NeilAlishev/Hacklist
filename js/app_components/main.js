@@ -3,9 +3,9 @@ import {
   AsyncStorage
 } from 'react-native';
 
-import HackDispatcher from './hacks/hack_dispatcher';
-import ChoosePage from './auth/choose';
 import Spinner from './core/spinner';
+import ChoosePage from './auth/choose';
+import HackDispatcher from './hacks/hack_dispatcher';
 
 import Api from '../enums/api';
 import Environment from '../environment/environment';
@@ -24,13 +24,10 @@ export default class MainPage extends React.Component {
     if (hacks) {
       return <HackDispatcher hacks={hacks}/>;
     }
-
     if (error) {
-      this.state.error = false;
       return <ChoosePage navigator={this.props.navigator} error={true}/>;
-    } else {
-      return <Spinner/>;
     }
+    return <Spinner/>;
   }
 
   getHacks() {

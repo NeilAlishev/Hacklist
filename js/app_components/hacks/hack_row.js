@@ -7,14 +7,15 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import {Card} from 'react-native-elements';
-
+import {
+  Card
+} from 'react-native-elements';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Route from '../../enums/route';
 import DateUtil from '../../util/date_util.js';
+import Route from '../../enums/route';
 
 export default class HackRow extends React.Component {
   render() {
