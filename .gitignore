@@ -28,6 +28,8 @@ keystores
 *.keystore
 local.properties
 *.iml
+*.bundle
+*.bundle.meta
 
 # node.js
 node_modules/
