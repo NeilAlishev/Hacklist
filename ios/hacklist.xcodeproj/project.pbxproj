@@ -612,7 +612,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 87UXY27TJ3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1112,8 +1112,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Hacklist/Hacklist.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Наиль Алишев (87UXY27TJ3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Наиль Алишев (87UXY27TJ3)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 87UXY27TJ3;
@@ -1126,6 +1126,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.NeilAlishev.Hacklist;
 				PRODUCT_NAME = Hacklist;
+				PROVISIONING_PROFILE = "b661b046-6a56-4814-bd16-b554f81fba54";
+				PROVISIONING_PROFILE_SPECIFIER = DistributionProvisioningProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1137,8 +1139,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Hacklist/Hacklist.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Наиль Алишев (87UXY27TJ3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Наиль Алишев (87UXY27TJ3)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 87UXY27TJ3;
 				INFOPLIST_FILE = Hacklist/Info.plist;
@@ -1150,6 +1152,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.NeilAlishev.Hacklist;
 				PRODUCT_NAME = Hacklist;
+				PROVISIONING_PROFILE = "b661b046-6a56-4814-bd16-b554f81fba54";
+				PROVISIONING_PROFILE_SPECIFIER = DistributionProvisioningProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
